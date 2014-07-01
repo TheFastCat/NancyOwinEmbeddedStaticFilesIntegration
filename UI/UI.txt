@@ -1,0 +1,165 @@
+﻿  //////////////////////////////////////////////
+ //// UI                    version 0.0.07 ////
+//////////////////////////////////////////////
+
+	This .csproj will contain all html, cshtml etc static pages that are served via SalesApplications to users as well as 3rd-party JavaScript 
+	libraries and frameworks used to drive the UI. Currently included/leveraged libraries/frameworks include:
+  
+	  /////////////////////////////
+	 //// Directory Structure ////
+	/////////////////////////////
+
+		NOTE: current directory structure is in flux; it is hoped that eventually it will become more organized (as outlined, below). This will be more easily accomplished
+		when we can use Owin.Static Files to serve our static files (instead of Nancy). Currently there is a defect in Owin.StaticFiles prohibiting this from being done: 
+		http://goo.gl/ZsD3JS
+
+		The directory structure for the UI is designed to be logically organized, easily maintained, and extensible. It utilizes MV* methodologies.
+		(see .sln's README.txt for information on MVC and MVVM)
+		-UI
+			-Individual folders for all 3rd Party libraries, located at the top level of the directory in order to be accessable for Nancy
+			
+			-Controllers- contains JS files that will interact with both Models and Views and will facilitate communcation
+			
+			-Models/ViewModel- contains JS files that will be responsible for requesting and stroring data from the API
+				
+				-VM suffix indicates that it is a VM, we are pricipally using View Models
+					
+					-Models are Domain Entities that the application interacts with
+						-Models are then grouped in folder by the view that they interact with.  For example the folder for customersTab holds all fo the 
+						 	view models for customersTab.html.  
+						
+					-View Models are classes that interact with views.
+					
+					-MasterVM is a view model that serves to rollup all view models that interact with the same view and create one view model
+						 	for binding to eliminate mutiple binding error on the same element. 
+										
+					-All event handlers are contined in the View Model where the event is originated
+					
+				-db prefix indicates models that are specifically used for the Dashboard
+				
+			-Resources- contains resouces that will be utilized by Views
+				-css- contains stylesheets that are unique to the application, not 3rd party stylesheets
+				-data- contains data files that are not being accessed through the API
+				-fonts- contains font files
+				-Images- contains images that may be refrenced by view and 3rd party libraries
+				-Views- contains all view files that will be responsible for the ultimate UI
+			-Views- 
+				-contains test views and 
+				-the master index.html that refrences all other views
+	 
+	  //////////////////////////////
+	 //// API                    //
+	//////////////////////////////
+		The folling variables exist in models/saprtan.js and need to be toggled for production deployment.
+	  	
+	  	my.apiBase = 'http://wdennusstra0769/dev/api/'; //Use this for development
+      	my.apiBase = /api/;  //Use this for push to master
+		
+	  //////////////////////////////
+	 //// GeoSpatial Data ETL    //
+	//////////////////////////////
+		These are the ETL processes used to create the GeoSpatial data for the application. All SQL tables, views and procedures live on the SQL replication server ppdensqrp01
+		in the GeoSpatial DB.  The ETL is performed in FME workspaces and then the data is loaded back in to SQL tables, this prevents us from having to hit web services
+		extensively from the application and incuring the steep fees associated, by creating our ouwn geospatial database.  Once the data is stored in SQL, FME workspaces 
+		are again used to create GeoJSON files for any view that we need.  These files have to be updated by running the workspace.
+			
+			////////////////////////	
+			/GeoSpatial Base Tables/
+			////////////////////////
+			
+			-glgGeoData - a table that contains all our shipments, updated daily with encoded polyline driving routes.
+			
+			-ZipCodes_tl_2013_us_zcta510 - a table of Census Bureau ZCTA zip codes with lat lng and SQL geometry.
+					
+		
+			////////////////////	
+			/Customer GeoCoding/
+			////////////////////
+			
+			-SoloCustomers - a table of customers only created from the SoloRecords to provide a table can be used for dev until ready to update SoloRecords.
+			
+			-SoloCustomersToGeoCode - a table of customers from SoloCustomers that does not contain Latitude OR Longitude information.
+			
+			-SoloCustomersGeoCoded - a table that is updated from an FME workspace that contains records from SoloCustomersToGeoCode that have now been GeoCoded using Google web service.
+			
+			-GeoObjViewCustomers - a view combining SoloCustomer and SoloCustomersGeoCoded for use in the sales app. This view is then called by an FME workspace that creates a geojson 
+				file for each sales person contianing their customers. 
+				
+			///////////////////
+			/Sales Territories/
+			///////////////////
+			Sales territories are polgons created from an accumilation of zip code polygons.  This makes for a very large file, so there are a number of steps taken to minimize this.
+			A table for sales territories containing these sales territories has been created from ZCATA data from the US Census.  If territories are redesigned this will have to be 
+			revisited. 
+			
+			-TerritoriesGeom -  a table of all sales territory polygons created from an aggregate of ZCATA zip code polygons.  This table is then run through and FME 
+				workspace (SalesAppGeoData.fmw), to create a GeoJSON file.  This file then must be uploaded to www.mapshaper.org, reduced to 1% and a new GeoJSON file 
+				downloaded and saved to the source code resouces/data/.
+							
+			
+			//////////////////
+			/ShipmentPolyline/
+			//////////////////
+			
+			-vcgAirPolyline - a view used to create a straight line between two points for air routes.
+			
+			-vcgAllGroundRoutes - a view that holds all of the encoded polylines for any ground route for a tracking number including pickup and delivery.
+				This information is gathered from an application that goes out to Google directions web service and returns the first quickest route from Google.
+			
+			-fmeAllGroundRoutesPolyline - a table created from an FME workspace that converts the encoded polyline from vcgAllGroundRoutes to SQL gemometry type.
+			
+			-vcgShipmentPolyline - a view that compbines vcgAirPolyline and fmeAllGroundRoutes which will then be run through an FME workspace that will aggregagte by book_num.
+			
+			-fmeShipmentPolylineAggregated - a table created from an FME workspace that creates a SQL geometry polyline for the full shipment that can be converted to GeoJSON for
+				use in the application, or referenced by other more specific views such as GeoObjViewShipmentsFailure to create a GeoJSON view for service failures.
+												
+			/////////////////////////
+			/Specific Shipment Views/
+			/////////////////////////
+			All views stored in SQL follow this naming convention GeoObjViewShipments...
+			
+			-GeoObjViewShipmentsFailure - a view that provides shipment polylines for tracking numbers returned from api/shipments?Failure=True.
+			
+			-GeoObjViewShipmentsQuote - a view that provides shipment polylines for tracking numbers returned from api/shipments?Phase=Quote. 
+				This view is built from the base ZCTA zip codes table due to the fact that for quotes we frequently only have zip codes to work with.
+							
+						
+			////////////////
+			/FME Workspaces/
+			////////////////
+			These are the FME workpaces that need to be run to perform the necessary ETL operations, and are located on dvclodev02 in the SharedProjects 
+			folder on the c: drive, SalesAppFME folder.
+			
+			-GeoCodeSoloCustomers
+				-bat_GeoCodesoloCustomers.bat - running this will execute the GeoCodeSoloRecords workspace which is throtled to the first 1500 record of 
+					the SQL view SoloCustomersToGeoCode, in order to stay under Google GeoCode web service thresholds (2500) with room to spare. 
+	
+			-SalesTerritories.fmw -  open and run this workspace to create a new sales territories GeoJSON file.  This file then must be uploaded to 
+				www.mapshaper.org, reduced to 1% and a new GeoJSON file downloaded and saved to the source code resouces/data/.
+			
+			-SalesAppGeoData.fmw - 
+				-ObjGeoCustomersNewBusiness - this creates the GeoJSON file for customer markers for api/customers?Category=New
+				
+				-GeoObjCustomersQuotesPending - this creates the GeoJSON file for customer markers for api/customers?Phase=New
+				
+				-GeoObjViewCustomers - this creates individual GeoJSON files for each sales persons containing all of their customers.
+				
+				-SalesTerritories - this creates a GeoJSON file of sales territories.  This file then must be uploaded to www.mapshaper.org, 
+					reduced to 1% and a new GeoJSON file downloaded and saved to the source code resouces/data/.
+					
+				-GeoObjViewShipmentsFailure - this creates the GeoJSON file for polylines for api/shipments/Failure=True.														
+			
+	  //////////////////////////////
+	 //// JQUERY                 //
+	//////////////////////////////
+
+		(see .sln's README.txt for information on JQuery)
+
+	  //////////////////////////////
+	 //// KNOCKOUT.JS            //
+	//////////////////////////////
+
+		(see .sln's README.txt for information on Knockout.JS) http://learn.knockoutjs.com/#/?tutorial=intro
+
+
+		// TODO - extend the directory of this .csproj to be more maintainable

@@ -1,0 +1,9 @@
+{"name":"dbo.GeoObjViewCustomers","type":"FeatureCollection"
+,"features":[
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-122.194096,47.491435]},"properties":{"cb_status":"U","City":"RENTON","State":"WA","description":"PACCAR -- RENTON,WA","user_id":"JOBO","CustomerName":"PACCAR","solo_key":3879,"cb_territorty":"WASEA"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[-72.737924,41.880656]},"properties":{"cb_status":"U","City":"WINDSOR","State":"CT","description":"KAMAN INDUSTRIAL -- WINDSOR,CT","user_id":"JOBO","CustomerName":"KAMAN INDUSTRIAL","solo_key":243688,"cb_territorty":"CT"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[-90.276991,38.727488]},"properties":{"cb_status":"U","City":"ST LOUIS","State":"MO","description":"EMERSON PROCESS MANAGEMENT -- ST LOUIS,MO","user_id":"JOBO","CustomerName":"EMERSON PROCESS MANAGEMENT","solo_key":263700,"cb_territorty":"MOSTL"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[-83.046359,42.605692]},"properties":{"cb_status":"U","City":"STERLING HEIGHTS","State":"MI","description":"FAURECIA -- STERLING HEIGHTS,MI","user_id":"JOBO","CustomerName":"FAURECIA","solo_key":276410,"cb_territorty":"MIDTW"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[-93.270128,44.979645]},"properties":{"cb_status":"U","City":"MINNEAPOLIS","State":"MN","description":"XCEL ENERGY -- MINNEAPOLIS,MN","user_id":"JOBO","CustomerName":"XCEL ENERGY","solo_key":276418,"cb_territorty":"MNMSP"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[-111.89082,40.764785]},"properties":{"cb_status":"U","City":"SALT LAKE CITY","State":"UT","description":"ROCKY MOUNTAIN POWER -- SALT LAKE CITY,UT","user_id":"JOBO","CustomerName":"ROCKY MOUNTAIN POWER","solo_key":276743,"cb_territorty":"UTSLN5"}}
+]}

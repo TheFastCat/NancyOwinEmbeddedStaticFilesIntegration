@@ -1,0 +1,4 @@
+{"name":"dbo.GeoObjViewCustomers","type":"FeatureCollection"
+,"features":[
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-81.619385,41.39111]},"properties":{"cb_status":"D","City":"CLEVELAND","State":"OH","description":"JOY GLOBAL  -- CLEVELAND,OH","user_id":"EPMA","CustomerName":"JOY GLOBAL","solo_key":8142,"cb_territorty":"OHCLE"}}
+]}

@@ -1,0 +1,107 @@
+<!-- this page can be loaded as external HTML into a colorbox dialog box, but breaks auto complete??? 
+<!-- this code needs to be placed in the origin HTML file to call the external content
+	<div class="ui-widget-header">Conversion Metrics</div>				
+	<a class='ajax cboxElement' title="Edit Planner Activity" href="../../Resources/Views/dialogEditPlannerActivity.html">Edit Acitivity</a>
+-->
+
+<script type="text/javascript">
+	ko.applyBindings(my.addToPlannerMasterVM, $("#editPlannerActivityForm")[0]);
+</script>
+
+<div id="dialogEditPlanner">
+	<p title="Edit Planner Activity" data-bind=": myPlannerActivities"> Only works with visible HTML?</p>
+	<form id="editPlannerActivityForm" >
+		<table border="2" cellspacing="6" cellpadding="6">
+			<tr>
+				<td colspan="3" width="100%">	
+					<label>Customer:</label>								
+					<input size="70" data-bind="jqAuto: 
+						{ autoFocus: true }, 
+						jqAutoSource: listAllCustomerNumber, 
+						jqAutoValue: AddToPlannerCustomerNumber, 
+						jqAutoSourceLabel: 'FullCustomer', 
+						jqAutoSourceInputValue: 'FullCustomer', 
+						jqAutoSourceValue: 'CustomerNo'" />									
+				</td>
+			</tr>
+			<tr>
+				<td width="25%">
+					<label for="myPlannerNoteCode">Action:</label>
+		        	<select data-bind="value: AddToPlannerNoteCode">
+		        		<option value="NULL">Select</option>
+		        		<option value="DSMR">Meeting (DSMR)</option>
+		        		<option value="DSAR">Phone Call (DSAR)</option>						        		
+		       		 </select>
+				</td>
+				<td width="25%">
+					<label for="myPlannerAlertOrigin">Alert Origin:</label>
+		        	<select data-bind="value: AddToPlannerAlertOrigin">
+		        		<option value="NULL">Select</option>
+		        		<option value="newbusiness">New Business</option>
+		        		<option value="quotespending">Quote Pending</option>
+		        		<option value="Lead Note">Lead Note</option>
+		        		<option value="servicefailure">Service Failure</option>
+		        		<option value="referralendorsement">Referral/Endorsement</option>
+		        		<option value="returningcustomer">Returning Customer</option>
+		        		<option value="Returning Contact">Returning Contact</option>
+		        		<option value="campaign">Campaign</option>
+		        		<option value="mediacampaign">Media Campaign</option>						        		
+		       		 </select>
+				</td>								
+				<td width="20%" id="pipelineSolutionSelect" rowspan="4" colspan="1" data-bind="foreach: addToPlannerSolutionSold">
+					<input type="checkbox" data-bind="checkedValue: ps_description, checked: AddToPlannerSolutionSold" />
+					<span data-bind="text: ps_description"></span><br>
+				</td>						
+			</tr>
+			<tr>
+				<td width="55%">									
+	    		<label>Start Date:</label>
+	    		<input placeholder="DD/MM/YY" data-bind="jqDatepicker: true, value: AddToPlannerStartDate" style="width: 8em" />
+	    		<label>End Date:</label>
+	    		<input placeholder="DD/MM/YY" data-bind="jqDatepicker: true, value: AddToPlannerEndDate" style="width: 8em" />
+	    		<br>
+	    		<label>Start Time:</label>
+	    		<input placeholder="HH:MM" data-bind="jqTimepicker: ture, value: AddToPlannerStartTime" style="width: 8em" />
+	    		<label>End Time:</label>
+	    		<input placeholder="HH:MM" data-bind="jqTimepicker: ture, value: AddToPlannerEndTime" style="width: 8em" />						    		
+			</td>
+			<td width="20%">
+					<label>Contact:</label>
+					<select id="addToPlannerActivityContactSelect" data-bind="
+						options: contactsToShow,
+						optionsText: 'ContactName',										
+						value: AddToPlannerActivityContact,
+						optionsCaption: 'Select Contact'
+						">										
+			  		</select><br>
+			    	<label>Contact Phone:</label>
+					<select id="addToPlannerActivityContactSelect" data-bind="
+						options: customerContactToShow,
+						optionsText: 'PhoneDetails',										
+						value: AddToPlannerActivityContactPhone,
+						optionsCaption: 'Select Phone'
+						">										
+			  		</select>							    	
+			    </td>							    
+			</tr>								
+			<tr>
+				<td colspan="2" width="75%">
+					<label>Address:</label>
+					<select id="addToPlannerActivityContactSelect" data-bind="
+						options: customerContactToShow,
+						optionsText: 'ContactAddress',										
+						value: AddToPlannerActivityAddress,										
+						">										
+			  		</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" width="75%">
+					<label for="myPlannerNote">Note:</label><br>
+        			<textarea rows="5" cols="70" data-bind="value: AddToPlannerNote" ></textarea>	
+				</td>
+			</tr>
+			
+	    </table>				    				   
+	</form>	
+</div>

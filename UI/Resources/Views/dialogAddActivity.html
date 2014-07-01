@@ -1,0 +1,178 @@
+<!--------------------------------->
+<!-- Add to Planner Event Dialog -->
+<!--------------------------------->				
+<script type="text/javascript" >
+	//This should live in spartanVM, but causes multiple binding conflict???
+	ko.applyBindings(my.addActivityMasterVM, $("#addToPlanner")[0]);
+
+</script>
+
+<form id="addToPlanner">
+	
+		<div id="marginBottomOneEm">					
+			<strong id="formTitleFieldText">Customer:</strong>								
+			<input id="addActivityCustomer" type="text" size="70" data-bind="
+				jqAuto:	{ autoFocus: true }, 
+				jqAutoSource: listAllCustomerNumber, 
+				jqAutoValue: my.selectedCustomerObservable, 
+				jqAutoSourceLabel: 'FullCustomer', 
+				jqAutoSourceInputValue: 'FullCustomer', 
+				jqAutoSourceValue: 'CustomerNo'" 
+			/>										
+			<br><br>
+			<strong id="formTitleFieldText">Contact:</strong>
+			<select id="addActivityContact" data-bind="
+				options: listAllContacts,
+				optionsText: 'FullName',
+				optionsValue: 'ContactID',										
+				value: AddToPlannerActivityContact,
+				optionsCaption: 'Select Contact'">										
+	 		</select>
+	  		<a href data-bind="click: newContact"><u>Add New</u></a>	  			
+		</div>
+		
+		<div id="marginBottomOneEm">
+			<table>
+				<tr>
+				<td>				
+					<strong id="formTitleFieldTextWithPadding">Action:</strong>
+		        	<select id="addActivityNoteCode" data-bind="value: AddToPlannerNoteCode">
+		        		<option value="NULL">Select</option>
+		        		<option value="DSMR">Meeting (DSMR)</option>
+		        		<option value="DSAR">Phone Call (DSAR)</option>						        		
+		       		 </select>
+				</td>
+				<td>
+					<strong id="formTitleFieldTextWithPadding">Activity Source:</strong>
+		        	<select id="addToPlannerSalesActivitySource" data-bind="
+						options: addToPlannerSalesActivitySource,
+						optionsText: 'Activity',	
+						optionsValue: 'ActivityId',									
+						value: AddToPlannerSalesActivitySource,
+						optionsCaption: 'Select Activity Source'">										
+			  		</select>
+	       		 </td>
+	       		 <tr>
+	       		 	<td>
+		       		 	<strong id="formTitleFieldTextWithPadding">Start Date:</strong>
+			    		<input id="addActivityStartDateStyle" placeholder="DD/MM/YY" data-bind="jqDatepicker: true, value: AddToPlannerStartDate"/>
+			    	</td>
+			    	<td>
+			    		<strong id="formTitleFieldTextWithPadding">Start Time:</strong>
+			    		<input id="addActivityStartTime" placeholder="HH:MM" data-bind="jqTimepicker: ture, value: AddToPlannerStartTime"/>		    		
+	       		 	</td>
+	       		 </tr>
+	       		 <tr>
+	       		 	<td>
+	       				<strong id="formTitleFieldTextWithPadding">End Date:</strong>
+	    				<input id="addActivityEndDate" placeholder="DD/MM/YY" data-bind="jqDatepicker: true, value: AddToPlannerEndDate"/>
+	       		 	</td>
+	       		 	<td>
+	       				<strong id="formTitleFieldTextWithPadding">End Time:</strong>
+	    				<input id="addActivityEndTimeStyle" placeholder="HH:MM" data-bind="jqTimepicker: ture, value: AddToPlannerEndTime"/>						    		
+	       		 	</td>
+	       		 </tr>
+	       		 <tr>
+	       		 	<td>
+	       		 		<strong id="formTitleFieldTextWithPadding">Phone:</strong>
+						<select type="text" id="addToPlannerActivityContactSelect" data-bind="
+							options: addActivityContactPhones,
+							optionsText: 'Phone',
+							value: AddToPlannerActivityContactPhone,
+							optionsCaption: 'Select Number'">													
+				 		</select>				 		
+	       		 	</td>
+	       		 	<td>
+	       		 		<strong id="formTitleFieldTextWithPadding">Direct:</strong>
+						<select type="text" id="addToPlannerActivityContactSelectDirectStyle" data-bind="
+							options: addActivityContactPhones,
+							optionsText: 'Direct',					
+							value: AddToPlannerActivityContactDirect,
+							optionsCaption: 'Select Number'">										
+				  		</select>
+	       		 		<a href data-bind="click: editContact" id="editContact"><u>Edit</u></a>
+	       		 	</td>
+	       		 	
+	       		 </tr>
+       		</table>	 
+		</div>	
+									
+		<div id="marginBottomOneEm">					
+			<strong id="formTitleFieldTextWithPadding">Address:</strong>	
+			<select id="addToPlannerActivityContactSelectAddress" data-bind="
+				options: allCustomerAddresses,
+				optionsText: 'FullAddress',										
+				value: AddToPlannerActivityAddress,
+				optionsCaption: 'Select Address'">	
+	  		</select>
+	  		<a href data-bind="click: editMeetingAddress" id="editMeetingAddress"><u>Edit Meeting Address</u></a>
+		</div>
+		
+		<strong id="solutionSoldAndNoteStyle">Solution Sold:</strong>	
+		<div id="marginBottomOneEm" data-bind="foreach: addToPlannerSolutionSold">
+			<input type="checkbox" data-bind="checkedValue: SolutionId, checked: AddToPlannerSolutionSold" />
+			<span data-bind="text: Solution"></span>
+		</div>
+						
+		<div>				
+			<strong id="solutionSoldAndNoteStyle">Note:</strong><br>
+			<textarea id="addActivityNote" rows="5" cols="93" placeholder="Enter Note" data-bind="value: AddToPlannerNote"></textarea>    			
+		</div>
+    					    				    				   
+</form>	
+<!-- Confirm add new Customer -->
+<div id="dialog-confirm" title="Add Customer"></div>
+
+<!-- Add New Contact -->
+<div id="addNewContactDialog" class="dialog" title="Add Contact">
+	
+		<div>
+			<div><label>First Name</label></div>
+			<div><input type="text"/></div>
+		</div>
+		<div>
+			<div><label>Last Name</label></div>
+			<div><input type="text"/></div>	
+		</div>
+		<div>
+			<div><label>Phone</label></div>
+			<div><input placeholder="_ _ _-_ _ _-_ _ _ _" type="text"/></div>	
+		</div>
+		<div>
+			<div><label>Direct</label></div>
+			<div><input placeholder="_ _ _-_ _ _-_ _ _ _" type="text"/></div>
+		</div>
+</div>
+<!-- Edit Contact Phones-->
+<div id="editContactPhonesDialog" class="dialog" title="Edit Contact Phones">
+		<div>
+			<div><label>Phone</label></div>
+			<div><input placeholder="_ _ _-_ _ _-_ _ _ _" type="text"/></div>	
+		</div>
+		<div>
+			<div><label>Direct</label></div>
+			<div><input placeholder="_ _ _-_ _ _-_ _ _ _" type="text"/></div>
+		</div>
+</div>		
+<!-- Edit Meeting Address -->
+<div id="editMeetingAddressDialog" class="dialog" title="Edit Meeting Address">
+	
+		<div>
+			<div><label>Street</label></div>
+			<div><input type="text"/></div>
+		</div>
+		<div>
+			<div><label>City</label></div>
+			<div><input type="text"/></div>	
+		</div>
+		<div>
+			<div><label>State</label></div>
+			<div><input type="text"/></div>	
+		</div>
+		<div>
+			<div><label>Zip Code</label></div>
+			<div><input type="text"/></div>
+		</div>
+</div>
+
+		

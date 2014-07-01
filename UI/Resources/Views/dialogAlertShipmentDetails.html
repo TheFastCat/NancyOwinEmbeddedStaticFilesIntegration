@@ -1,0 +1,164 @@
+<!--------------------------------->
+<!-- New Customer Details Dialog -->
+<!--------------------------------->	
+<script type="text/javascript" >
+
+	//TODO-CAMO- This should live in spartanVM, but causes multiple binding conflict???
+	ko.applyBindings(my.alertShipmentTrackingNumberVM, $("#alertShipmentTrackingNumberSelect")[0]);
+	ko.applyBindings(my.alertShipmentDetailVM, $("#tableAlertShipmentDetail")[0]);	
+		
+	//Populate tracking number variable for subscription needed for api/customer alerts
+	$(function(){
+		//Hide tracking number select for api/shipment alerts
+		if(my.selectedCustomerObservable() == 0) {
+			$('#alertShipmentTrackingNumberSelect').hide();			
+		};
+		if(my.selectedCustomerObservable() != 0) {
+			$('#alertShipmentTrackingNumberSelect').show();			
+		};
+			
+		$('#alertShipmentTrackingNumberSelect').on('change', function(){
+			my.selectedAlertTrackingNumberObservable($('#alertShipmentTrackingNumberSelect').val());				
+		});		
+		
+	});
+	
+</script>
+
+<body>
+	<div id="newCustomerAlertDetails" >		
+		<select id="alertShipmentTrackingNumberSelect" data-bind="
+			options: alertShipmentTrackingNumber,
+			optionsText: 'TrackingNumber',
+			optionsValue: 'TrackingNumber'">										
+ 		</select> 
+ 		 		
+ 		<div id="tableAlertShipmentDetail"> 		
+			<table width="100%" border="0">		
+				<tr>
+					<th colspan="2"><h4>Shipper</h4></th>
+					<th colspan="2"><h4>Consignee</h4></th>
+					<th colspan="2"><h4>Third Party</h4></th>
+				</tr>
+				<!-- ko foreach: alertShipmentDetail -->
+				<tr>
+					<td id="shipmentImportantInfo" colspan="6">
+					  <div id="shipmentServicePaymentDetails">	
+						<strong>Shipment Date: </strong>
+						<span id="shipmentDateStyle" data-bind="text: ShipmentDate"></span>
+						<strong>Service: </strong>
+						<span id="serviceStyle" data-bind="text: Service"></span>
+						<strong>Tracking Number: </strong>
+						<span id="trackingNumberStyle" data-bind="text: TrackingNumber"></span>    
+					</div>
+					</td>
+				</tr>
+				<tr>				
+					<td><strong>Sales User</strong></td>
+					<td data-bind="text: ShpUser"></td>				
+					<td><strong>Sales User</strong></td>
+					<td data-bind="text: ConUser"></td>				
+					<td><strong>Sales User</strong></td>
+					<td data-bind="text: ThdUser"></td>	
+				</tr>
+				<tr>
+					<td><strong>Customer #</strong></td>
+					<td data-bind="style: {backgroundColor : ShpCustNum() == my.selectedCustomer ? 'yellow' : '#f2f5f7'}">					
+						<span data-bind="text: ShpCustNum"></span>					
+					</td>
+					<td><strong>Customer #</strong></td>
+					<td data-bind="style: {backgroundColor : ConCustNum() == my.selectedCustomer ? 'yellow' : '#f2f5f7'}">				
+						<span data-bind="text: ConCustNum"></span>
+					</td>
+					<td><strong>Customer #</strong></td>
+					<td data-bind="style: {backgroundColor : ThdCustNum() == my.selectedCustomer ? 'yellow' : '#f2f5f7'}">				
+						<span data-bind="text: ThdCustNum"></span>
+					</td>
+				</tr>
+				<tr>
+					<td><strong>Customer Name</strong></td>
+					<td data-bind="style: {backgroundColor : ShpCustNum() == my.selectedCustomer ? 'yellow' : '#f2f5f7'}">									
+						<span data-bind="text: ShpCompany"></span>
+					</td>
+					<td><strong>Customer Name</strong></td>
+					<td data-bind="style: {backgroundColor : ConCustNum() == my.selectedCustomer ? 'yellow' : '#f2f5f7'}">					
+						<span data-bind="text: ConCompany"></span>
+					</td>
+					<td><strong>Customer Name</strong></td>
+					<td data-bind="style: {backgroundColor : ThdCustNum() == my.selectedCustomer ? 'yellow' : '#f2f5f7'}">				
+						<span data-bind="text: ThdCompany"></span>
+					</td>
+				</tr>
+				<tr>				
+					<td><strong>Address</strong></td>
+					<td>					
+						<span data-bind="text: ShpStreet1"></span><br />
+						<span data-bind="text: ShpCity"></span>
+						<span data-bind="text: ShpState"></span>
+						<span data-bind="text: ShpZipcode"></span>					
+					</td>				
+					<td><strong>Address</strong></td>
+					<td>					
+						<span data-bind="text: ShpStreet1"></span><br />
+						<span data-bind="text: ConCity"></span>
+						<span data-bind="text: ConState"></span>
+						<span data-bind="text: ConZipcode"></span>					
+					</td>	
+					<td><strong>Address</strong></td>
+					<td>					
+						<span data-bind="text: ThdStreet1"></span><br />
+						<span data-bind="text: ThdCity"></span>
+						<span data-bind="text: ThdState"></span>
+						<span data-bind="text: ThdZipcode"></span>					
+					</td>	
+				</tr>
+				<tr>				
+					<td><strong>Contact</strong></td>
+					<td data-bind="text: ShpContact"></td>				
+					<td><strong>Contact</strong></td>
+					<td data-bind="text: ConContact"></td>				
+					<td><strong>Contact</strong></td>
+					<td data-bind="text: ThdContact"></td>	
+				</tr>
+				
+				
+				<tr>
+					<td data-bind="css: {'fa fa-money': FreightTerms() == 'PPD'}">
+					</td>
+					<td></td>
+					<td data-bind="css: {'fa fa-money': FreightTerms() == 'COL'}">
+						
+					</td>
+					<td></td>
+					<td data-bind="css: {'fa fa-money': FreightTerms() == '3RD'}">
+						
+					</td>
+					<td></td>				
+				</tr>		
+							
+					
+				<tr>
+					<td data-bind="if: ShpUser() == my.salesUserFilter">
+						<button data-bind="click: addActivityFromShipmentDetail">Add To Planner</button>	
+					</td>
+					<td></td>
+					<td data-bind="if: ConUser() == my.salesUserFilter">
+						<button data-bind="click: addActivityFromShipmentDetail">Add To Planner</button>	
+					</td>
+					<td></td>
+					<td data-bind="if: ThdUser() == my.salesUserFilter">
+						<button data-bind="click: addActivityFromShipmentDetail">Add To Planner</button>	
+					</td>
+					<td></td>				
+				</tr>					
+					
+				<!-- /ko -->
+			</table>
+			
+		</div>
+	</div>	
+	
+	
+	<div class="modal"><!-- Place at bottom of page --></div>
+	
+</body>

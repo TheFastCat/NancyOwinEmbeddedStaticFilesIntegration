@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+	
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="images/Diagnostic.png"/>  
+	
+   <title>Diagnostics - Sales Application</title>
+ 
+  <!-- Stylesheets --> 
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">   
+  <link rel="stylesheet" href="../../jquery-ui/bootstrap-inspired-theme/css/custom-theme/jquery-ui-1.10.0.custom.css"> 
+  <!--<link rel="stylesheet" href="../../jquery-ui/cupertino/jquery-ui-1104custom.css" type="text/css" />  -->
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">   -->   
+  <link rel="stylesheet" href="../../KoGrid/KoGrid.css" type="text/css" /> 
+  <link rel="stylesheet" href="../../Resources/css/diagnostics.css"> 
+ <!-- <link rel="stylesheet" href="../../Resources/css/glyphicons.css">  -->   <!--Reference is "icon-search" in JavaScript  --> 
+ 
+  <script src="../../jquery/jquery-2.0.3.min.js"></script>
+  <script src="../../jquery-ui/jquery-ui-1.10.4.js"></script>  
+	
+  <!-- Moment js -->
+  <script src="../../momentjs/moment.min.js"></script>
+
+  <!--knockout -->
+  <script src="../../knockout/knockout-3.0.0.js"></script>
+  <script src="../../knockout/knockout-sortable.js"></script>
+  <script src="../../knockout/knockout.mapping.js"></script>
+  <script src="../../knockout/knockout-postbox.min.js"></script>
+  
+  <!-- KoGrid -->
+  <script src="../../KoGrid/KoGrid.js"></script>
+  
+  <!-- Scripts -->
+  <script src="../../Models/spartan.js" defer="defer"></script> 
+  <script src="../../Models/diagnostics/logs.js" defer="defer"></script> 
+  <script src="../../Models/diagnostics/api.js" defer="defer"></script>
+  <script src="../../Models/diagnostics/server.js" defer="defer"></script> 
+
+  <script>
+  
+   //jQuery UI Tabs//	
+  	$(function() {
+    	$( "#tabs" ).tabs();
+  	});
+  	
+  	//Clear search button//
+  	function reloadPage() {
+    location.reload();
+	}
+	
+  </script>
+              
+</head>
+
+<body>
+<div id="tabs">
+	<h2>Sales Application Diagnostics</h2>
+  <ul>
+    <li><a href="#tabs-1">Logs</a></li>
+    <li><a href="#tabs-2">API</a></li>
+    <li><a href="#tabs-3">Server</a></li>
+  </ul>
+  <div id="tabs-1">
+  
+ <!-- <h3>Logs Search</h3> -->
+ 
+ 	<h3>Logs Search</h3>
+	<form>
+	<label for="startdate">Start Date:</label>
+	<input type="text" id="startdate" name="startdate" placeholder=" mm/dd/yyyy">
+	<label for="enddate">End Date:</label>
+	<input type="text" id="enddate" name="enddate" placeholder=" mm/dd/yyyy">
+
+		<label>Level:</label>
+		<select id ="leveldropdown">
+		    <option value="">ALL</option> 
+			<option value="ERROR">ERROR</option>
+			<option value="TEST">TEST</option>
+			<option value="INFO">INFO</option>
+			<option value="DEBUG">DEBUG</option>
+		<!--	<option value= null ></option>  -->
+		</select>
+		
+	<input type="button" value="Clear Search" onclick="reloadPage()">
+	<!--<div id="resetbutton"><input type="reset" value="Reset"></div>  -->
+
+	</form>	
+	<div class="gridStyle" data-bind="koGrid: gridOptions"></div>
+	
+  
+  </div>  <!--end of tabs-1-->
+  
+  <div id="tabs-2">
+  	
+  	<h3>API Assemblies</h3>
+	  <div class="gridStyle" data-bind="koGrid: gridOptions" title="Click on the magnifying glass to search table."></div>
+  	
+  	
+  </div><!--end of tabs-2-->
+   
+  <div id="tabs-3">
+  	  	
+	<h3>Server Assemblies</h3>
+	  <div class="gridStyle" data-bind="koGrid: gridOptions"></div>
+
+  </div>  <!--end of tabs-3-->
+</div>
+ 
+</body>
+        
+        <!--For Spinner -->
+        <div class="modal"></div>  
+         
+       
+       
+           
+</html>

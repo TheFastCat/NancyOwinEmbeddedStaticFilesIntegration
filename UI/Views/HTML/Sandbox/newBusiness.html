@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <script type="text/javascript">  
+		ko.applyBindings(SalesUsersVM(), $("#display")[0]); 
+		ko.applyBindings(newBusinessVM, $("#newBusinessTab2")[0]);
+		
+    </script>
+</head>
+	<div id="display" style="float: left; width: 50%">  
+    <select id="testSelect"  data-bind="
+    	options: salesUsers, 
+    	optionsText:'user_id', 
+    	value: salesUsersToShow, 
+    	optionsCaption: 'Select Sales User' ">
+    </select>
+	</div>
+	<script>
+		$("#testSelect").change(function(){
+			spartan.testSelectVal = self.user_id;
+			console.log(spartan.testSelectVal);
+		});
+	</script>
+
+	<div id="newBusinessTab2" style="float=left: height=300px" data-bind=" template{
+		foreach: leadsToShow,
+		beforeRemove: hideUserId,
+		afterAdd: showUserId }">
+    	<div data-bind="text: OwnerID"></div>
+	</div> 
+
+ <!--
+	<div id="newBusinessTab2" style="float: right; width: 50%;">
+		<table>
+			<thead>
+				<th>OwnerID</th>
+				<th>CustomerName</th>
+				<th>CustomerNo</th>
+			</thead>
+				<tbody data-bind="template{foreach: leadsToShow, beforeRemove: hideUserId, afterAdd: showUserId}">
+					<tr>
+						<td data-bind="text:OwnerID"></td>
+						<td data-bind="text:CustomerName"></td>
+						<td data-bind="text:CustomerNo"></td>
+					</tr>
+				</tbody>			
+		</table>
+
+	</div> 
+    <script type="text/javascript">     	
+    	     
+    	
+    </script>
+-->    
+
+</html>
+
+

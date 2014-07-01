@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->    
+    <link href="../../Bootstrap/bootstrap.css" rel="stylesheet" media="screen">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    
+    
+    <!--jQuery UI-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+  	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+   
+    
+    
+    
+    <style>	
+     		 div{font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;}
+          
+		     body {
+  				padding-top: 50px;
+			}
+
+			.starter-template {
+  				padding: 40px 15px;
+  				text-align: center;
+			}
+
+     
+            .fullName {
+                font-weight: bold;
+                font-size: 15px;
+            }
+
+            .gitCommit {
+                font-weight: bold;
+                font-size: 13px;
+                color: #FF5050;
+            }
+
+            .stronglyNamed {
+                font-weight: bold;
+                font-size: 10px;
+                color: #FF6600;
+            }
+            
+            .version {
+                font-weight: bold;
+                font-size: 13px;
+                color: #29863F;
+            }
+            
+            
+            #content {
+				padding:10px 10px;
+				border:2px solid gray;
+				margin:10px 30px;
+				width:47%;
+				background-color:#DFE8F5;      		    	
+            }
+            
+            .ui-widget {
+            	padding:30px 10px;
+				width:70%;
+            }
+            
+            
+             h2{
+            width: 95%;
+            margin: 0px auto;
+            margin-top: 30px;
+            font-size: 20px;
+            }
+            
+             div .form-group {
+            width: 70%;
+            margin: 0px auto;
+            }
+            
+            hr {
+            border-top: 1px solid #524A4A;
+            }
+            
+            #tags {
+            height: 34px;
+            }
+            
+            .ui-widget {
+            margin-left: 20px;
+            padding: 30px 0px 0px 0px;
+            }
+                   
+    </style>
+   
+   
+    
+   <script>
+  $(function() {
+    var availableTags = [
+      "Microsoft",
+      "Nancy",
+      "Version",
+      "System",
+      "Git",
+      "Commit",
+      "null",
+      "Build",
+      "Anonymously",
+      "Full Name",
+      "Strongly Named",
+      "PublicKeyToken",
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+  </script>
+   
+    
+  </head>
+  
+  <body>
+  
+ <div class="ui-widget">
+  <label for="tags">Search: </label>
+  <input id="tags"><button type="button" class="btn btn-default btn-sm">
+  <span class="glyphicon glyphicon-search"></span> 
+</button>
+</div>
+ 
+
+   <div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand" href="#">SALES APPLICATION:</div>
+        </div>
+     
+          <ul class="nav nav-pills pull-left">
+            <li><a href="diagnostics.html">Diagnostics</a></li>
+            <li><a href="activedirectory.html">Active Directory</a></li>
+            <li><a href="applicationlogs.html">Application Logs</a></li>
+            <li class="active"><a href="practice.html">Practice</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+   
+    </div>
+
+    <div class="container">
+
+    
+        <h1></h1>
+        
+      </div>
+	</div>
+    </div><!-- /.container -->
+
+
+  
+     
+<div id="content"></div>
+   
+    <script type="text/javascript">
+
+        $.getJSON("../../Resources/data/assemblies.txt", function (data) {
+            var length = data.length;
+
+            while (length--) {
+                $('<tr>', { className: 'container' })
+
+                    .append($('<tr>', {
+                        className: 'Name',
+                        text: data[length]['Name'],
+                        addClass: ('fullName')
+                    }))
+                    .append($('<tr/>', {
+                        className: 'AssemblyIsStronglyNamed',
+                        html: "Strongly Named: " + data[length]['AssemblyIsStronglyNamed'] + "</text>",
+                        //text:"Strongly Named: " + data[length]['AssemblyIsStronglyNamed'],
+                        //addClass:('stronglyNamed')
+                    }))
+                    .append($('<tr>', {
+                        className: 'FullName',
+                        text: "Full Name: " + data[length]['FullName']
+                    }))
+                    .append($('<tr/>', {
+                        className: 'AssemblyInformationalVersion',
+                        //text:"Git Commit: " + data[length]['AssemblyInformationalVersion'],
+                        html: "Git Commit: " +  data[length]['AssemblyInformationalVersion'] + "</text>",
+                    }))
+                    
+                   .append($('<hr/>'))
+           
+
+                    .prependTo('#content');
+            }
+
+        });
+        
+   
+    </script>
+    
+  
+    
+    
+ 
+    
+
+
+  </body>
+</html>

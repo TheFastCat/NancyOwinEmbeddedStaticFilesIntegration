@@ -1,0 +1,40 @@
+<head>
+
+  <!-- script -->
+  <script src="../../Models/spartan.js"></script>
+  <script src="../../Models/spartan.data.js"></script>
+  <script src="../../Controllers/tabs.js"></script>
+  <script src="../../Controllers/drag.js"></script>
+</head>
+<div id="form" style="height: 100%">
+	<form>		
+		<fieldset class="drag" style="width: 93%; top:5%;">
+			<h2>Company Info</h2>
+			Customer #: <input type="text" name="companynumber"> 
+			User: <input type="text" name="user_id">
+			Team: <select>
+				<option>North</option>
+				<option>East</option>
+				<option>South</option>
+				<option>West</option>
+			</select>
+			Active: <input type="radio" name="active"><br />
+			Company: <input type="text" name="companyname"> 
+			DBA: <input type="text" />
+			Alias: <input type="text" /><br />
+			Physical Address: <textarea rows="4" cols="50"></textarea><br />
+			Mailing Address: <textarea rows="4" cols="50"></textarea>
+			Billing Address: <textarea rows="4" cols="50"></textarea><br />	
+			Website: <input type="text" name="companywebsite"><br />			
+		</fieldset>	
+		<fieldset class="drag" style="top: 47%">
+			Contacts: <textarea rows="10" cols="100"></textarea>
+		</fieldset>	
+		<fieldset class="drag" style="top: 71%">
+			DSMR: <textarea rows="10" cols="100"></textarea>
+		</fieldset>	
+		<fieldset class="drag" style="top: 95%">
+			DSAR: <textarea rows="10" cols="100"></textarea>
+		</fieldset>	
+	</form>
+</div>

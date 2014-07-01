@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Versions</title>
+  </head>
+  <body>
+
+    @Each
+    <div>
+      <b><font size="5">@Current.Name</font></b>
+	  @IfNot.AssemblyIsStronglyNamed
+	  <br />
+	  <font size="4" color="#FF6600"><b>Not strongly named</b></font>
+	  @EndIf
+      <br />
+      Full Name: @Current.FullName
+      <br />
+	  @If.AssemblyInformationalVersionIsGitCommitHash
+		   Git Commit: <font size="4" color="#FF5050"><b>@Current.AssemblyInformationalVersion</b></font>
+	  @EndIf
+
+	  @IfNot.AssemblyInformationalVersionIsGitCommitHash
+		   [AssemblyInformationalVersion]: @Current.AssemblyInformationalVersion
+	  @EndIf
+      
+      <br />
+      Location: @Current.Location
+    </div>
+    <hr>
+    @EndEach
+
+</body>
+</html>

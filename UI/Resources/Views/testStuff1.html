@@ -1,0 +1,150 @@
+<html>
+  <body>
+    <div id='testGoogleCalAPI'>
+    
+    <a href='#' id='authorize-button' onclick='handleAuthClick();'>Login</a>
+    
+    <div>
+    	<table>
+    		<tr>
+    			<td>
+    				<label>Summary</label>
+    				<input id="gcalInsertSummaryInput" type="text"/><br />
+    				<label>Location</label>
+    				<input id="gcalInsertLocationInput" type="text"/><br />
+    				<label>StartDate</label>
+    				<input id="gcalInsertStartDateInput" class="datepicker" />
+    				<label>StartTime</label>
+    				<input id="gcalInsertStartTimeInput" class="timepicker" /><br>
+    				<label>EndDate</label>
+    				<input id="gcalInsertEndDateInput" class="datepicker" />
+    				<label>EndDate</label>
+    				<input id="gcalInsertEndTimeInput" class="timepicker" /><br>
+    			</td>
+    		</tr>
+    	</table>
+    </div>
+    <a href='#' id='push-button' onclick='pushGCalEvent();'>PushEvent</a>
+    
+    <h1>Events</h1>
+    <ul id='events'></ul>
+ 	
+ 	</div>
+    <script>
+    	var gcalInsertSummary;
+    	$('#gcalInsertSummaryInput').on('change', function() {
+    		gcalInsertSummary = $('#gcalInsertSummaryInput').val();
+    	});
+    	
+    	var gcalInsertLocation;
+    	$('#gcalInsertLocationInput').on('change', function() {
+    		gcalInsertLocation = $('#gcalInsertLocationInput').val();
+    	});
+    	
+    	var gcalInsertStartDate;
+    	$('#gcalInsertStartDateInput').on('change', function() {
+    		gcalInsertStartDate = $('#gcalInsertStartDateInput').val();
+    	});
+    	
+    	var gcalInsertStartTime;
+    	$('#gcalInsertStartTimeInput').on('change', function() {
+    		gcalInsertStartTime = $('#gcalInsertStartTimeInput').val();
+    	});
+    	
+    	var gcalInsertEndDate;
+    	$('#gcalInsertEndDateInput').on('change', function() {
+    		gcalInsertEndDate = $('#gcalInsertEndDateInput').val();
+    	});
+    	
+    	var gcalInsertEndTime;
+    	$('#gcalInsertEndTimeInput').on('change', function() {
+    		gcalInsertEndTime = $('#gcalInsertEndTimeInput').val();
+    	});
+    	
+    
+        $(function() {
+			$( ".datepicker" ).datepicker();
+	  	});
+        $(function() {
+			$( ".timepicker" ).timepicker();
+	  	});
+        
+      	var clientId = '1061144355132.apps.googleusercontent.com';
+		var apiKey = 'AIzaSyDhTkOvtlDU6XyIyBOuLkWGSNBQdsOGULc';
+		var scopes = 'https://www.googleapis.com/auth/calendar';
+		
+		function handleClientLoad() {
+		  gapi.client.setApiKey(apiKey);
+		  window.setTimeout(checkAuth,1);
+		  checkAuth();
+		}
+		
+		function checkAuth() {
+		  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true},
+		      handleAuthResult);
+		}
+		
+		function handleAuthResult(authResult) {
+		  var authorizeButton = document.getElementById('authorize-button');
+		  if (authResult) {
+		    authorizeButton.style.visibility = 'hidden';
+		    makeApiCall();
+		  } else {
+		    authorizeButton.style.visibility = '';
+		    authorizeButton.onclick = handleAuthClick;
+		   }
+		}
+		
+		function handleAuthClick(event) {
+		  gapi.auth.authorize(
+		      {client_id: clientId, scope: scopes, immediate: false},
+		      handleAuthResult);
+		  return false;
+		}
+		
+		function makeApiCall() {
+		  gapi.client.load('calendar', 'v3', function() {
+		    var request = gapi.client.calendar.events.list({
+		      'calendarId': 'primary'
+		    });
+		          
+		    request.execute(function(resp) {
+		      for (var i = 0; i < resp.items.length; i++) {
+		        var li = document.createElement('li');
+		        li.appendChild(document.createTextNode(resp.items[i].summary));
+		        li.appendChild(document.createTextNode(resp.items[i].start.dateTime));		        
+		        document.getElementById('events').appendChild(li);
+		      }
+		    });
+		  });
+		}
+		
+		function pushGCalEvent(event) {
+		  gapi.client.load('calendar', 'v3', function() {
+		    
+		    var resource = {
+			  "summary": gcalInsertSummary,
+			  "location": "Somewhere",
+			  "start": {
+			    "dateTime": "2014-04-30T10:00:00.000-07:00"
+			  },
+			  "end": {
+			    'dateTime': "2014-04-30T10:00:00.000-07:30"
+			  }
+			};
+			
+		    var request = gapi.client.calendar.events.insert({
+		      'calendarId': 'primary',
+		      'resource': resource
+		    });
+		          
+		    request.execute(function(resp) {
+		      makeApiCall();
+		    });
+		  });
+		}
+		
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+  </body>
+</html>

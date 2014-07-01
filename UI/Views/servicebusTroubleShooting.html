@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head lang="en">
+        <title>servicebusTroubleShooting</title>
+        <meta charset="utf-8">
+        <!-- jQuery -->
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+        <style>
+            .fullName {
+                font-weight: bold;
+                font-size: x-large;
+            }
+        </style>
+    <div id="content"></div>
+    <hr />
+    <script type="text/javascript">
+       $.getJSON( "../../Resources/data/ObjCustomerNewBusiness.json", function( data ) {
+  var items = [];
+  $.each( data, function( Name, val ) {
+    items.push( "<li id='" + Name + "'>" + val + "</li>" );
+  });
+ 
+  $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+  }).appendTo( "body" );
+});
+    </script>
+</head>
+<body>
+
+</body>
+
+</html>

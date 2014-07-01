@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Active Directory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->    
+    <link href="../../Bootstrap/bootstrap.css" rel="stylesheet" media="screen">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    
+    <style>
+     		
+     		
+     		 div{font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;}
+        
+     
+		     body {
+  				padding-top: 50px;
+			}
+
+			.starter-template {
+  				padding: 40px 15px;
+  				text-align: center;
+			}
+
+     
+            .fullName {
+                font-weight: bold;
+                font-size: 15px;
+            }
+
+            .gitCommit {
+                font-weight: bold;
+                font-size: 13px;
+                color: #FF5050;
+            }
+
+            .stronglyNamed {
+                font-weight: bold;
+                font-size: 10px;
+                color: #FF6600;
+            }
+            
+            .version {
+                font-weight: bold;
+                font-size: 13px;
+                color: #29863F;
+            }
+            
+            
+            #content {
+				padding:10px 10px;
+				border:2px solid gray;
+				margin:10px 30px;
+				width:47%;
+				background-color:#DFE8F5;      		    	
+            }
+            
+            .form-group {
+            	padding:10px 10px;
+				width:70%;
+            }
+            
+            
+             h2{
+            width: 95%;
+            margin: 0px auto;
+            margin-top: 30px;
+            font-size: 20px;
+            }
+            
+             div .form-group {
+            width: 70%;
+            margin: 0px auto;
+            }
+            
+            hr {
+            border-top: 1px solid #524A4A;
+            }
+            
+            
+        </style>
+   
+    
+    
+  </head>
+  
+  
+  
+  <body>
+  
+  
+  <h2>Active Directory</h2>
+
+<form class="navbar-form navbar-left" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+    </div>
+    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+</form>
+  
+
+   
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SALES APPLICATION:</a>
+        </div>
+   
+          <ul class="nav nav-pills pull-left">
+            <li><a href="diagnostics.html">Diagnostics</a></li>
+            <li class="active"><a href="activedirectory.html">Active Directory</a></li>
+            <li><a href="applicationlogs.html">Application Logs</a></li>
+            <li><a href="practice.html">Practice</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+    
+        <h1></h1>
+        
+      </div>
+
+    </div><!-- /.container -->
+
+
+  
+     
+<div id="content"></div>
+   
+    <script type="text/javascript">
+        $.getJSON("../../Resources/data/assemblies.txt", function (data) {
+            var length = data.length;
+
+            while (length--) {
+                $('<tr>', { className: 'container' })
+
+                   
+                    .append($('<tr/>', {
+                        className: 'AssemblyInformationalVersion',
+                        //text:"Git Commit: " + data[length]['AssemblyInformationalVersion'],
+                        html: "Git Commit: " + "<text class='gitCommit'>" + data[length]['AssemblyInformationalVersion'] + "</text>",
+                    }))
+                    
+                   .append($('<hr/>'))
+           
+
+                    .prependTo('#content');
+            }
+
+        });
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,907 @@
+[
+{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131213120000.000"
+,"OpsId":"JOWE"
+,"Name":"OIL FILTRATION SYSTEMS INC"
+,"Number":12852
+,"TrackingNumber":"1312B1387"
+,"SalesId":"BRRO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"TOSA"
+,"Name":"OIL FILTRATION SYSTEMS INC"
+,"Number":12852
+,"TrackingNumber":"1401B1041"
+,"SalesId":"BRRO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"ALFO"
+,"Name":"APPLIED INDUSTRIAL TECHNOLOGIES"
+,"Number":21034
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1312B1751"
+,"SalesId":"BRRO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"GASP"
+,"Name":"STANDARD ALLOYS"
+,"Number":21117
+,"TrackingNumber":"1312B1225"
+,"SalesId":"BRRO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131226113000.000"
+,"OpsId":"MIGU"
+,"Name":"PANALPINA INC"
+,"Number":59009
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1312B1681"
+,"SalesId":"BRRO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131216160000.000"
+,"OpsId":"JOWE"
+,"Name":"OMNI CABLE CORPORATION"
+,"Number":69940
+,"TrackingNumber":"1312B1460"
+,"SalesId":"BRRO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"ALFO"
+,"Name":"PANALPINA INC"
+,"Number":77723
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1401A1223"
+,"SalesId":"BRRO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103120000.000"
+,"OpsId":"JOWE"
+,"Name":"EL PASO PIPE AND PUMP SUPPLY"
+,"Number":83934
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1401B1034"
+,"SalesId":"BRRO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"JOWE"
+,"Name":"FIALA FIRST FREIGHT"
+,"Number":302380
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1312B1432"
+,"SalesId":"BRRO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"TOSA"
+,"Name":"WEG ELECTRIC"
+,"Number":314753
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1401B1041"
+,"SalesId":"BRRO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131218083000.000"
+,"OpsId":"GASP"
+,"Name":"N C S ENERGY"
+,"Number":322752
+,"TrackingNumber":"1312B1481"
+,"SalesId":"BRRO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140624090000.000"
+,"OpsId":"BRHO"
+,"Name":"DENVER INDUSTRIAL PUMPS INC"
+,"Number":914
+,"TrackingNumber":"1307B1682"
+,"SalesId":"DAWS"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140106120000.000"
+,"OpsId":"MIEN"
+,"Name":"ENERGY EQUIPMENT AND SUPPLY"
+,"Number":1120
+,"TrackingNumber":"1401A1138"
+,"SalesId":"DAWS"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"JOAL"
+,"Name":"SANDOZ INC"
+,"Number":4368
+,"TrackingNumber":"1401B1021"
+,"SalesId":"DAWS"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131226070000.000"
+,"OpsId":"JOWE"
+,"Name":"TYSON FOODS"
+,"Number":21012
+,"TrackingNumber":"1312B1664"
+,"SalesId":"EVON"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"ALFO"
+,"Name":"CEVA LOGISTICS"
+,"Number":269857
+,"TrackingNumber":"1401A1155"
+,"SalesId":"EVON"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140106140000.000"
+,"OpsId":"GASP"
+,"Name":"ACE WORLD COMPANIES"
+,"Number":295992
+,"TrackingNumber":"1401B1053"
+,"SalesId":"EVON"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103140000.000"
+,"OpsId":"TRBR"
+,"Name":"CATERPILLAR INC"
+,"Number":554
+,"TrackingNumber":"1401A1145"
+,"SalesId":"JAMT"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"SCWI"
+,"Name":"HAWTHORNE POWER SYSTEMS"
+,"Number":1478
+,"TrackingNumber":"1401B1039"
+,"SalesId":"JAMT"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"MATO"
+,"Name":"PURVIS INDUSTRIES"
+,"Number":44410
+,"TrackingNumber":"1312B1578"
+,"SalesId":"JAMT"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140106120000.000"
+,"OpsId":"DETH"
+,"Name":"RUSSELL MINERAL EQUIPMENT"
+,"Number":296645
+,"TrackingNumber":"1401B1043"
+,"SalesId":"JAMT"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"SCWI"
+,"Name":"CATERPILLAR INC"
+,"Number":311385
+,"TrackingNumber":"1401B1039"
+,"SalesId":"JAMT"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131228100000.000"
+,"OpsId":"ALDA"
+,"Name":"LAMONS GASKET COMPANY"
+,"Number":1864
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1312B1645"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140102160000.000"
+,"OpsId":"MAMR"
+,"Name":"LAMONS GASKET COMPANY"
+,"Number":1864
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1401B1019"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131213120000.000"
+,"OpsId":"JOWE"
+,"Name":"HUDSON PRODUCTS"
+,"Number":20832
+,"TrackingNumber":"1312B1387"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103120000.000"
+,"OpsId":"JOWE"
+,"Name":"SHAW A P P"
+,"Number":20852
+,"TypeOfBusiness":"Air Expedite, Surface FTL, Surface Hotshot"
+,"TrackingNumber":"1401B1034"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131217120000.000"
+,"OpsId":"JOWE"
+,"Name":"PITMAN COMPANY"
+,"Number":22608
+,"TrackingNumber":"1312B1480"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140106140000.000"
+,"OpsId":"GASP"
+,"Name":"ACE WORLD COMPANIES"
+,"Number":23955
+,"TypeOfBusiness":"Air Expedite, Surface Hotshot"
+,"TrackingNumber":"1401B1053"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103143000.000"
+,"OpsId":"TRBR"
+,"Name":"R D O EQUIPMENT CO"
+,"Number":64212
+,"TrackingNumber":"1401B1046"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131226120000.000"
+,"OpsId":"JOWE"
+,"Name":"GRUMA CORP MISSION FOODS"
+,"Number":64411
+,"TypeOfBusiness":"Air Expedite, Surface Hotshot"
+,"TrackingNumber":"1312B1684"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"MAMR"
+,"Name":"GRUMA CORP MISSION FOODS"
+,"Number":64411
+,"TypeOfBusiness":"Air Expedite, Surface Hotshot"
+,"TrackingNumber":"1401B1020"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103140000.000"
+,"OpsId":"TRBR"
+,"Name":"APPLIED INDUSTRIAL TECHNOLOGIES"
+,"Number":243212
+,"TrackingNumber":"1401A1061"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"MATO"
+,"Name":"CAP CORP"
+,"Number":264266
+,"TrackingNumber":"1312B1578"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"JOWE"
+,"Name":"PRECISION DRILLING"
+,"Number":293502
+,"TrackingNumber":"1401B1001"
+,"SalesId":"JASM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131221120000.000"
+,"OpsId":"MIGU"
+,"Name":"DOW CORNING CORPORATION"
+,"Number":33209
+,"TrackingNumber":"1312B1626"
+,"SalesId":"MEMU"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131218083000.000"
+,"OpsId":"GASP"
+,"Name":"ULTRA PREMIUM OILFIELD SERVICES"
+,"Number":333780
+,"TrackingNumber":"1312B1481"
+,"SalesId":"MEMU"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"ALFO"
+,"Name":"CVG AIRPORT"
+,"Number":334256
+,"TrackingNumber":"1401A1155"
+,"SalesId":"MEMU"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103140000.000"
+,"OpsId":"TRBR"
+,"Name":"PUBLIC SERVICE OF NEW MEXICO"
+,"Number":2543
+,"TypeOfBusiness":"Air Expedite, Surface Hotshot"
+,"TrackingNumber":"1401A1191"
+,"SalesId":"MICO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103140000.000"
+,"OpsId":"TRBR"
+,"Name":"WAGNER EQUIPMENT COMPANY"
+,"Number":2745
+,"TypeOfBusiness":"Air Expedite, Surface Hotshot"
+,"TrackingNumber":"1401A1191"
+,"SalesId":"MICO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140102110000.000"
+,"OpsId":"JAHE"
+,"Name":"BLUE MOUNTAIN ENERGY"
+,"Number":3354
+,"TypeOfBusiness":"Air Expedite, Surface Hotshot"
+,"TrackingNumber":"1310B1310"
+,"SalesId":"MICO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140102110000.000"
+,"OpsId":"JAHE"
+,"Name":"MAGNUM METALS"
+,"Number":5861
+,"TrackingNumber":"1310B1310"
+,"SalesId":"MICO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103143000.000"
+,"OpsId":"TRBR"
+,"Name":"JOHN DEERE"
+,"Number":53533
+,"TypeOfBusiness":"Air Expedite, Surface Hotshot"
+,"TrackingNumber":"1401B1046"
+,"SalesId":"MICO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"ALFO"
+,"Name":"INTEL CORPORATION"
+,"Number":55210
+,"TrackingNumber":"1401A1223"
+,"SalesId":"MICO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20130617173000.000"
+,"OpsId":"DEND"
+,"Name":"FRONTIER AIRLINES"
+,"Number":217718
+,"TrackingNumber":"CO17944"
+,"SalesId":"MICO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"ALFO"
+,"Name":"DESERT HILLS ELECTRIC SUPPLY"
+,"Number":265157
+,"TrackingNumber":"1312B1709"
+,"SalesId":"MICO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131226120000.000"
+,"OpsId":"JOWE"
+,"Name":"MISSION FOODS"
+,"Number":279845
+,"TrackingNumber":"1312B1684"
+,"SalesId":"MICO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131227173000.000"
+,"OpsId":"GASP"
+,"Name":"PURVIS INDUSTRIES"
+,"Number":317004
+,"TrackingNumber":"1312B1715"
+,"SalesId":"MICO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131226113000.000"
+,"OpsId":"MIGU"
+,"Name":"I B M"
+,"Number":334093
+,"TrackingNumber":"1312B1681"
+,"SalesId":"MICO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"SCWI"
+,"Name":"SHAW NAPTECH INC"
+,"Number":10403
+,"TrackingNumber":"1401B1044"
+,"SalesId":"NABR"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"DETH"
+,"Name":"AMALGAMATED SUGAR"
+,"Number":11317
+,"TrackingNumber":"1312A2605"
+,"SalesId":"NABR"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20130617173000.000"
+,"OpsId":"DEND"
+,"Name":"CATERPILLAR INC"
+,"Number":549
+,"TrackingNumber":"CO17944"
+,"SalesId":"NAVO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"MIEN"
+,"Name":"ZIMMERMAN METALS INC"
+,"Number":3474
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1312B1728"
+,"SalesId":"NAVO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"JOWE"
+,"Name":"D F BOILER TUBE INDUSTRIES INC"
+,"Number":78360
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1312B1432"
+,"SalesId":"NAVO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131226120000.000"
+,"OpsId":"JOWE"
+,"Name":"MISSION FOODS OMAHA"
+,"Number":292975
+,"TrackingNumber":"1312B1684"
+,"SalesId":"NAVO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103140000.000"
+,"OpsId":"TRBR"
+,"Name":"CATERPILLAR GLOBAL MINING"
+,"Number":1900
+,"TrackingNumber":"1401A1191"
+,"SalesId":"PALE"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131217140000.000"
+,"OpsId":"JAHE"
+,"Name":"JOY GLOBAL SURFACE MINING"
+,"Number":7118
+,"TrackingNumber":"1312B1478"
+,"SalesId":"PALE"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131217140000.000"
+,"OpsId":"JAHE"
+,"Name":"TURQUOISE RIDGE JOINT VENTURE"
+,"Number":320560
+,"TrackingNumber":"1312B1478"
+,"SalesId":"PALE"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"ALFO"
+,"Name":"KAMAN INDUSTRIAL TECHNOLOGIES"
+,"Number":37344
+,"TrackingNumber":"1312B1675"
+,"SalesId":"PERI"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131217140000.000"
+,"OpsId":"JAHE"
+,"Name":"D U X MACHINERY CORP"
+,"Number":60351
+,"TrackingNumber":"1312B1478"
+,"SalesId":"PERI"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103120000.000"
+,"OpsId":"BRHO"
+,"Name":"K AND N ELECTRIC MOTORS"
+,"Number":78271
+,"TrackingNumber":"1401B1045"
+,"SalesId":"PERI"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140106120000.000"
+,"OpsId":"DETH"
+,"Name":"ARCELOR MITTAL MINE"
+,"Number":291416
+,"TrackingNumber":"1401B1043"
+,"SalesId":"PERI"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140107170000.000"
+,"OpsId":"TRBR"
+,"Name":"PENNSYLVANIA MACHINE WORKS"
+,"Number":4306
+,"TrackingNumber":"1401B1042"
+,"SalesId":"REPF"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103140000.000"
+,"OpsId":"TRBR"
+,"Name":"FINNING CANADA"
+,"Number":7398
+,"TrackingNumber":"1401A1145"
+,"SalesId":"REPF"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103120000.000"
+,"OpsId":"NACA"
+,"Name":"TEST1"
+,"Number":22433
+,"TrackingNumber":"1401B1013"
+,"SalesId":"REPF"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"ALDA"
+,"Name":"WEBSTER ASSOCIATES"
+,"Number":22910
+,"TypeOfBusiness":"Air Expedite, Surface Hotshot"
+,"TrackingNumber":"1312A3110"
+,"SalesId":"REPF"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103140000.000"
+,"OpsId":"TRBR"
+,"Name":"R W HOT SHOT SERVICE INC"
+,"Number":220654
+,"TrackingNumber":"1401A1145"
+,"SalesId":"REPF"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20130117120000.000"
+,"OpsId":"TOSA"
+,"Name":"FUSION INC"
+,"Number":4586
+,"TrackingNumber":"1312B1491"
+,"SalesId":"REWE"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140102180000.000"
+,"OpsId":"MAMR"
+,"Name":"TEXAS ELECTRIC EQUIPMENT"
+,"Number":5269
+,"TrackingNumber":"1401B1025"
+,"SalesId":"REWE"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"JOWE"
+,"Name":"LOCKWOOD INTERNATIONAL INC"
+,"Number":20809
+,"TrackingNumber":"1312B1384"
+,"SalesId":"REWE"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131219120000.000"
+,"OpsId":"JOWE"
+,"Name":"BERENDSEN FLUID POWER"
+,"Number":51243
+,"TrackingNumber":"1312B1551"
+,"SalesId":"REWE"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"MATO"
+,"Name":"GLOBAL STAINLESS SUPPLY"
+,"Number":73343
+,"TrackingNumber":"1312B1581"
+,"SalesId":"REWE"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"MIGU"
+,"Name":"S CON SERVICES"
+,"Number":256097
+,"TypeOfBusiness":"Surface Hotshot"
+,"TrackingNumber":"1312A3647"
+,"SalesId":"REWE"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131226120000.000"
+,"OpsId":"ALDA"
+,"Name":"G H X"
+,"Number":333955
+,"TrackingNumber":"1312B1599"
+,"SalesId":"REWE"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"JOWE"
+,"Name":"LOCKWOOD INTERNATIONAL"
+,"Number":77889
+,"TrackingNumber":"1312B1384"
+,"SalesId":"RIMO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"MAMR"
+,"Name":"MISSION FOODS"
+,"Number":14777
+,"TrackingNumber":"1401B1020"
+,"SalesId":"RODV"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140102110000.000"
+,"OpsId":"JAHE"
+,"Name":"WEIR SPECIALTY PUMP"
+,"Number":43878
+,"TrackingNumber":"1310B1310"
+,"SalesId":"RODV"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"ALFO"
+,"Name":"KENAI DRILLING"
+,"Number":77489
+,"TrackingNumber":"1312B1619"
+,"SalesId":"RODV"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140106120000.000"
+,"OpsId":"TRBR"
+,"Name":"HACH COMPANY"
+,"Number":1439
+,"TrackingNumber":"1401A1151"
+,"SalesId":"STFA"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140101070000.000"
+,"OpsId":"JAHE"
+,"Name":"SULZER PUMPS INC"
+,"Number":2946
+,"TrackingNumber":"1312B1588"
+,"SalesId":"STFA"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"JAHE"
+,"Name":"SULZER PUMPS INC"
+,"Number":2946
+,"TrackingNumber":"1312A2954"
+,"SalesId":"STFA"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103140000.000"
+,"OpsId":"TRBR"
+,"Name":"WHISLER BEARING CO"
+,"Number":6327
+,"TrackingNumber":"1401B1048"
+,"SalesId":"STFA"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"JAHE"
+,"Name":"FRONTIER EL DORADO REFINING"
+,"Number":8084
+,"TrackingNumber":"1312A2954"
+,"SalesId":"STFA"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140106120000.000"
+,"OpsId":"TRBR"
+,"Name":"MIDCO SUPPLY"
+,"Number":32741
+,"TrackingNumber":"1401B1012"
+,"SalesId":"STFA"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103080000.000"
+,"OpsId":"DOBU"
+,"Name":"CONTRACTORS SUPPLY INC"
+,"Number":272241
+,"TrackingNumber":"1401B1026"
+,"SalesId":"STFA"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"GASP"
+,"Name":"CHEVRON U S A"
+,"Number":614
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1312B1225"
+,"SalesId":"TIKO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"MATO"
+,"Name":"N O V WILSON"
+,"Number":4023
+,"TrackingNumber":"1401A1096"
+,"SalesId":"TIKO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"TRWA"
+,"Name":"WEST COAST SWITCH GEAR"
+,"Number":5246
+,"TypeOfBusiness":"Surface Hotshot"
+,"TrackingNumber":"1312B1764"
+,"SalesId":"TIKO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"PEBR"
+,"Name":"CEMEX"
+,"Number":8930
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1309C1048"
+,"SalesId":"TIKO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131221120000.000"
+,"OpsId":"MIGU"
+,"Name":"TITAN METAL FABRICATORS"
+,"Number":19002
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1312B1626"
+,"SalesId":"TIKO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20131211120000.000"
+,"OpsId":"GASP"
+,"Name":"B P S LONG BEACH"
+,"Number":20038
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1312B1287"
+,"SalesId":"TIKO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"MATO"
+,"Name":"B P S LONG BEACH"
+,"Number":20038
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1312B1581"
+,"SalesId":"TIKO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140107120000.000"
+,"OpsId":"GASP"
+,"Name":"STANLEY ELECTRIC"
+,"Number":20199
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1401B1056"
+,"SalesId":"TIKO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"JOWE"
+,"Name":"SMITH COOPER INTERNATIONAL"
+,"Number":32791
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1312B1268"
+,"SalesId":"TIKO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"MATO"
+,"Name":"TESORO REFINERY"
+,"Number":43496
+,"TypeOfBusiness":"Air Expedite"
+,"TrackingNumber":"1401A1096"
+,"SalesId":"TIKO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140103140000.000"
+,"OpsId":"TRBR"
+,"Name":"APPLIED INDUSTRIAL TECHNOLOGIES"
+,"Number":71863
+,"TrackingNumber":"1401A1061"
+,"SalesId":"TIKO"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"MAMR"
+,"Name":"MISSION FOODS"
+,"Number":17509
+,"TrackingNumber":"1401B1020"
+,"SalesId":"TRGA"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140107120000.000"
+,"OpsId":"GASP"
+,"Name":"PRAXAIR"
+,"Number":75304
+,"TrackingNumber":"1401B1056"
+,"SalesId":"TRGA"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"ALFO"
+,"Name":"SAMTEC INC"
+,"Number":334255
+,"TrackingNumber":"1401A1155"
+,"SalesId":"TRGA"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"TOSA"
+,"Name":"FRONTIER INTERNATIONAL"
+,"Number":76794
+,"TrackingNumber":"1401B1041"
+,"SalesId":"TRLI"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20140201100000.000"
+,"OpsId":"ALFO"
+,"Name":"SPECIFIC SYSTEMS"
+,"Number":331002
+,"TrackingNumber":"1312B1577"
+,"SalesId":"TRLI"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"OpsId":"DETH"
+,"Name":"CLEAR EDGE FILTRATION"
+,"Number":332588
+,"TrackingNumber":"1312A2605"
+,"SalesId":"TRLI"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"ShipDate":"20130617173000.000"
+,"OpsId":"DEND"
+,"Name":"CAP LOGISTICS"
+,"Number":3710
+,"TrackingNumber":"CO17944"
+,"SalesId":"XXXX"
+}
+]

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript">
+	//Add datepicker to event creation form//
+	$(function() {
+	    $( "#datepicker" ).datepicker({
+	      showButtonPanel: true
+	    });
+	});  ko.applyBindings(vm,$("#alerts_planner")[0]);
+</script>
+</head>
+
+<div id="alerts_planner">	
+    <div class="myPlanner">
+        <div class="ui-widget-content" data-bind="sortable: { data: myPlannerActivities, allowDrop: $root.isTableFull }">
+            <div class="student" data-bind="text: plannerEvent"></div>                       
+        </div>
+    </div>
+
+	<div id="newBusinessAlerts">   
+	    <div class="alertsWidget" data-bind="sortable: newBusinessLeads">
+	        <div class="dragToPlanner" data-bind="text: fullCustomer"></div>
+	    </div>
+	</div>	
+	
+	<div id="dialog-form" title="Add Planner Activity" data-bind="dialog: addToPlannerCustomerName">
+	  <p class="validateTips">All form fields are required</p>	 
+	  <form id="addToPlanner">	  	  	
+		<div>
+			<label for="CustomerName">Customer:</label>
+			<input type="text" data-bind="value: addToPlannerCustomerName" size="75" />
+		</div>
+		<div>
+	        <label for="CustomerNo">Customer Number:</label>
+	        <input type="text" data-bind="value: addToPlannerCustomerNumber"/>
+	   </div> 
+	    <div>
+	        <label for="myPlannerNoteCode">Node Code:</label>
+	        <select data-bind="value: myPlannerNoteCode">
+	        	<option value=NULL>Select</option>
+	        	<option value="DSMR">DSMR</option>
+	        	<option value="DSAR">DSAR</option>
+	        </select>
+	    </div>
+	    <div id="addToMyPlannerDateField">
+	    	<label for="addToPlannerDate">Date</label>
+	    	<input type="text" id="datepicker" data-bind="value: addToPlannerDate" />
+	   	</div>
+	    <div>
+	        <label for="myPlannerNote">Note:</label>
+	        <textarea data-bind="value: myPlannerNote" cols="80" rows="10"></textarea>
+	    </div>
+	    <button type="submit">GO!!!</button>
+   
+	</form>
+	</div>
+	<div id="message" data-bind="dialog: addToPlannerCustomerName"></div>
+</div>
+
+

@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<body>					
+
+
+		<div id="myGrid" style="width:600px;height:500px; float: left;"></div>
+		
+		
+		<script type="text/javascript">
+			var grid;
+			var columns = [
+			    {id: "description", name: "Customer", field: "description", width: 300},
+			    {id: "CustomerNumber", name: "Customer #", field: "CustomerNumber"},
+			    {id: "Bucket", name: "Bucket", field: "Bucket"},
+			    {id: "user_id", name: "Sales ID", field: "user_id"},
+			    {id: "Aging", name: "Aging", field: "Aging"},
+			    {id: "PassFail", name: "Called in Threshold", field: "PassFail"}
+			];
+			
+			var options = {
+			    enableCellNavigation: true,
+			    enableColumnReorder: true,
+			    forceFitColumnns: true
+			};
+			
+			$.getJSON("../../Resources/data/vABCD_Aging.json", function(data) {
+				//spartan.data.cbStatusAging = data;
+				var filteredAging = $.grep(data, function(d, i) {
+					return (d.user_id == "BRRO");
+				});
+				/*
+				var filteredAging = data.filter(function(d) {
+					return d.properties.user_id == spartan.salesUserFilter; //&& d.Bucket == spartan.cbStatusFilter;
+				});
+				*/
+				grid = new Slick.Grid("#myGrid", filteredAging, columns, options);
+				$("#myGrid").click(function() {
+					var tabs = $("#tabs").tabs();
+					var ul = tabs.find("ul");
+					$( "<li><a href='customerProfile.html/'>Customer Profile</a></li>" ).appendTo( ul );
+					//$( "<div id='customerProfile'><p>Customer Profile</p></div>" ).appendTo( tabs );
+					tabs.tabs("refresh");
+					$("#tabs").tabs({active:3});						
+				})
+			});					
+		</script>
+	</body>
+	

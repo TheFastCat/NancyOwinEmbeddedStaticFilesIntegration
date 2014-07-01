@@ -1,0 +1,93 @@
+<!---------------------------------------------->
+<!-- Add Planner Event From Customer Grid Row -->							
+<!---------------------------------------------->
+
+
+<script type="text/javascript" >
+	ko.applyBindings(my.addActivityMasterVM, $("#addCustomerActivity")[0]);
+</script>
+
+<form id="addCustomerActivity" data-bind="foreach: selectedCustomerGridRow">
+	<table border="2" cellspacing="6" cellpadding="6">
+		<tr>
+			<td colspan="2" width="100%">					
+				<label>Customer:</label>								
+				<span data-bind="text: CustomerName, value: AddToPlannerCustomerName"></span>
+				<span data-bind="text: CustomerNo, value: AddToPlannerCustomerNumber"></span>						
+			</td>
+			<td>
+				<span data-bind="text: SalesID, value: AddToPlannerAssignedTo"></span>												
+			</td>											
+		</tr>
+		<tr>
+			<td width="25%">
+				<label for="myPlannerNoteCode">Action:</label>
+	        	<select data-bind="value: AddToPlannerNoteCode">
+	        		<option value="NULL">Select</option>
+	        		<option value="DSMR">Meeting (DSMR)</option>
+	        		<option value="DSAR">Phone Call (DSAR)</option>						        		
+	       		 </select>
+			</td>
+			<td width="25%">
+				<label for="myPlannerAlertOrigin">Alert Origin:</label>
+	        	<span data-bind="text: SalesActivitySource"></span>
+			</td>								
+			<td width="20%" id="pipelineSolutionSelect" rowspan="4" colspan="1" data-bind="foreach: addToPlannerSolutionSold">
+				<input type="checkbox" data-bind="checkedValue: ps_description, checked: AddToPlannerSolutionSold" />
+				<span data-bind="text: ps_description"></span><br>
+			</td>						
+		</tr>
+		<tr>
+			<td width="55%">									
+	    		<label>Start Date:</label>
+	    		<input placeholder="NAMING CONVETION" data-bind="jqDatepicker: true, value: AddToPlannerStartDate" />
+	    		<label>End Date:</label>
+	    		<input placeholder="NAMING CONVETION" data-bind="jqDatepicker: true, value: AddToPlannerEndDate" />
+	    		<br>
+	    		<label>Start Time:</label>
+	    		<input placeholder="NAMING CONVETION" data-bind="jqTimepicker: ture, value: AddToPlannerStartTime" />
+	    		<label>End Time:</label>
+	    		<input placeholder="NAMING CONVETION" data-bind="jqTimepicker: ture, value: AddToPlannerEndTime" />						    		
+			</td>
+			<td width="20%">	
+				<label>Contact:</label>
+				<select data-bind="											
+					options: customerAlertContactToShow,
+					optionsText: 'ContactName',										
+					value: AddToPlannerActivityContact,
+					optionsCaption: 'Select Contact'">										
+		  		</select><br>
+		    	<label>Contact Phone:</label>
+				<select id="addToPlannerActivityContactSelect" data-bind="
+					options: customerContactToShow,
+					optionsText: 'PhoneDetails',										
+					value: AddToPlannerActivityContactPhone,
+					optionsCaption: 'Select Phone'
+					">										
+		  		</select>							    	
+		    </td>							    
+		</tr>								
+		<tr>
+			<td colspan="2" width="75%">
+				<label>Address:</label>
+				<select id="addToPlannerActivityContactSelect" data-bind="
+					options: customerContactToShow,
+					optionsText: 'ContactAddress',										
+					value: AddToPlannerActivityAddress,										
+					">										
+		  		</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" width="75%">
+				<label for="myPlannerNote">Note:</label><br>
+    			<textarea rows="5" cols="70" data-bind="value: AddToPlannerNote" ></textarea>	
+			</td>
+		</tr>
+		
+    </table>					    				    				   
+</form>					
+
+
+
+	

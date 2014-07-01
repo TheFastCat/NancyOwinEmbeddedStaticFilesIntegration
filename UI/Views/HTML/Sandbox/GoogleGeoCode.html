@@ -1,0 +1,148 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+  <!--
+  <script src="//www.google.com/jsapi?key=AIzaSyDhTkOvtlDU6XyIyBOuLkWGSNBQdsOGULc" type="text/javascript"></script>
+  -->
+  <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDhTkOvtlDU6XyIyBOuLkWGSNBQdsOGULc" type="text/javascript"></script>
+  
+  </script>
+</head>
+<body>
+
+<table>
+  <tbody>
+  <tr>
+    <td rowspan="2">
+      <div id="novel">
+        <h4>Batch geocoder with CSV output</h4>
+        <div id="scale"><div id="bar"></div></div>
+        Paste your addresses here:<br>
+        <form class="geocode" action="#" onsubmit="geo(this.haku.value, this.ext.value); return false">
+          <textarea cols="40" rows="10" wrap="off" id="haku" name="haku" title="200+ lines not recommended at a time"></textarea><br />
+          <input type="submit" id="hae" value=" Geocode " title="Run"><br />
+          with
+          <input type="text" id="ext" title="Extension added to each query">
+          extension
+        </form>
+        Errors:
+        <div>
+        <textarea id="errors" cols="40" rows="5" wrap="off" title="Error report"></textarea><br>
+        <input type="button" id="stop" value="Stop" title="Emergency stop" onclick="len=0">
+        <input type="button" id="clr-in" value="Clr output" title="Clear map and output fields" onclick="clearOutput()">
+        <input type="button" id="clr-out" value="Clr input" title="Clear input field" onclick="clearInput()">
+        </div>
+        <p>Extension is a country, state or town that is equal for all your addresses but missing from your list.</p>
+        <p>Output format: <code> lng, lat, address</code> (GPS equipment POI CSV file format).</p>
+        <p></p> 
+      </div>
+    </td>
+  </tr>
+
+</tbody></table>
+<textarea id="memo" cols="60" rows="30" wrap="off" title="Copy and edit your material here."></textarea>
+
+
+<script type="text/javascript">
+
+/**
+ * 'Map coming...' visible only with JavaScript on.
+ */
+
+if (!GBrowserIsCompatible()) {
+  alert('Sorry. Your browser is not Google Maps compatible.');
+}
+
+
+/**
+ * Geocoder
+ */
+var points = [];
+var bounds = new GLatLngBounds();
+var geocoder = new GClientGeocoder();
+var lines;
+var lineNumber;
+var len = 0;
+var bar = document.getElementById("bar");
+var scale = document.getElementById("scale");
+function geo(addresses,ext){
+  scale.style.visibility = "visible";
+  var start = new Date().getTime();
+  lines = addresses.split("\n");
+  len = lines.length;
+  lineNumber=0;
+  function doIt(){
+    var query = lines[lineNumber];
+    if(ext)query += ", " + ext;
+    geocoder.getLatLng(query,function(point){
+      if(!point){
+        lineNumber++;
+        report(query, lineNumber);
+        if(lineNumber<len){doIt()};
+      }else{
+   
+        point.address = query;
+        points.push(point);//to be used
+        memo(point); // intentionally slow function
+        lineNumber++;
+        
+        if(lineNumber<len){doIt()};
+        
+        bar.style.width = parseInt(300*lineNumber/len)+"px";
+      }
+      if(lineNumber>=len){
+        var time = ((new Date().getTime() - start)/1000).toFixed(0);
+      };
+    });
+  }
+  doIt();
+}
+
+
+
+
+
+/**
+ * Dom functions for output fields
+ */
+var printOut = document.getElementById("memo");
+printOut.value = "";
+function memo(pnt){
+  var row = pnt.lng().toFixed(5);
+  row += ", ";
+  row += pnt.lat().toFixed(5);
+  row += ", ";
+  row += pnt.address;
+  row += "\n";
+  printOut.value += row;
+}
+
+var errorReport = document.getElementById("errors");
+errorReport.value = "";
+function report(query_, n_){
+  var row ="#"+n_;
+  row += " not found: ";
+  row += query_;
+  row += "\n";
+  errorReport.value += row;
+}
+
+function clearInput(){
+  document.getElementById("haku").value="";
+  scale.style.visibility = "hidden";
+  bar.style.width = "0px";
+}
+
+function clearOutput(){
+  bounds = new GLatLngBounds();
+  printOut.value="";
+  errorReport.value="";
+  scale.style.visibility = "hidden";
+  bar.style.width = "0px";
+}
+
+
+
+
+</script>
+
+</body></html>

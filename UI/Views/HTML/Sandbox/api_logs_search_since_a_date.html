@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>API Logs - Since A Date</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+
+  <!-- Stylesheets --> 
+  <link rel="stylesheet" href="../../../KoGrid/KoGrid.css" type="text/css" />
+  <link href="../../../Bootstrap/bootstrap.css" rel="stylesheet" media="screen">
+   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+  
+  <!-- jquery -->  
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  <!-- Moment js -->
+  <script src="../../../momentjs/moment.min.js"></script>
+
+  <!--knockout -->
+  <script src="../../../knockout/knockout-3.0.0.js"></script>
+  <script src="../../../knockout/knockout-sortable.js"></script>
+  <script src="../../../knockout/knockout.mapping.js"></script>
+  <script src="../../../knockout/knockout-postbox.min.js"></script>
+  
+  <!-- KoGrid -->
+  <script src="../../../KoGrid/KoGrid.js"></script>
+  
+  <!-- Scripts -->
+  <script src="../../../Models/spartan.js"></script>
+
+     
+     <style>
+     			
+     		 div{font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;}
+        
+     
+		     body {
+  				padding-top: 50px;
+			}
+
+			.starter-template {
+  				padding: 40px 15px;
+  				text-align: center;
+			}
+
+     
+            .fullName{    font-weight: bold;
+                font-size: 15px;
+            }
+
+            .gitCommit {
+                font-weight: bold;
+                font-size: 13px;
+                color: #FF5050;
+            }
+
+            .stronglyNamed {
+                font-weight: bold;
+                font-size: 13px;
+                color: #FF6600;
+            }
+            
+            .version {
+                font-weight: bold;
+                font-size: 13px;
+                color: #29863F;
+            }
+            
+            
+            #content {
+				padding:10px 10px;
+				border:2px solid gray;
+				margin:10px 30px;
+				width:47%;
+				background-color:#DFE8F5;      		    	
+            }
+            
+            .form-group {
+            	padding:10px 10px;
+				width:70%;
+            }
+            
+            
+            h2{
+            	width: 94%;
+            	margin: 0px auto;
+            	margin-top: 30px;
+            	font-size: 21px;
+            }
+            
+            div .form-group {
+            	width: 70%;
+            	margin: 0px auto;
+            }
+            
+            hr {
+            	border-top: 1px solid #524A4A;
+            }
+            
+            .gridStyle {
+    			border: 1px solid rgb(212,212,212);
+   			 	width: 1200px; 
+   			 	height: 600px;
+   			 	margin: 20px 40px;
+			}
+			
+			
+			.selectedItems{
+    			float: left; 
+			}
+			
+			#startdate {
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+			
+			#enddate {
+				margin-top: 10px;
+				margin-left: 16px;
+			}
+			
+			#leveldropdown {
+				margin-top: 15px;
+				margin-left: 40px;
+			}
+			
+			#submitbutton {
+				margin-top: 15px;
+				margin-left: 40px;
+			}
+			
+			#resetbutton {
+				margin-top: 15px;
+				margin-left: 40px;
+			}
+			
+			#leveldropdown {
+				margin-top: 15px;
+				margin-left: 40px;
+			}
+			
+			label {
+				margin-top: 15px;
+				margin-left: 40px;
+			}
+
+			
+        </style>
+   
+  </head>
+  
+  <body>
+  	
+  <h2>API Logs</h2>
+
+	<form>
+		<label>All logs since a date:</label><input id="startdate" placeholder=" mm/dd/yyyy" type="text"/><br />
+		<label>All logs until a date:</label><input id="enddate" placeholder=" mm/dd/yyyy" type="text"/><br />
+		<label>Level:</label>
+		<select id ="leveldropdown">
+			<option value= null ></option>
+			<option value="ERROR">ERROR</option>
+			<option value="TEST">TEST</option>
+			<option value="INFO">INFO</option>
+			<option value="DEBUG">DEBUG</option>
+		</select>
+		
+		<div id="resetbutton">
+			<input type="reset" value="Reset">
+		<div>
+		
+	</form>
+	
+	<div class="gridStyle" data-bind="koGrid: gridOptions"></div>
+
+
+ 
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      	<div class="container">
+        	<div class="navbar-header">
+          		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            		<span class="sr-only">Toggle navigation</span>
+            		<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+          		</button>
+         		
+         		<a class="navbar-brand" href="#">SALES APPLICATION:</a>
+        	</div>
+    
+          	<ul class="nav nav-pills pull-left">
+            	<li><a href="diagnostics.html">Diagnostics</a></li>
+            	<li><a href="activedirectory.html">Active Directory</a></li>
+            	<li class="active"><a href="apilogs.html">Application Logs</a></li>
+          	</ul>
+        	</div><!--/.nav-collapse -->
+      		</div>
+    	</div>
+
+    </div><!-- /.container -->
+
+
+    <script type="text/javascript">
+		
+		var searchboxvalueStartDate = ko.observable($("#startdate").val());
+		$("#startdate").on("change",function(){
+			searchboxvalueStartDate($("#startdate").val());				
+		});
+		
+		var searchboxvalueEndDate = ko.observable($("#enddate").val());
+		 $("#enddate").on("change",function(){
+			searchboxvalueEndDate($("#enddate").val());				
+		});
+		
+		var searchboxvalueLevel = ko.observable($("#leveldropdown").val());
+		 $("#leveldropdown").on("change",function(){
+			searchboxvalueLevel($("#leveldropdown").val());				
+		});
+		
+		var searchboxvalueAllLogs = ko.observable($("#resetbutton").val());
+		$("#resetbutton").on("click",function(){
+			searchboxvalueStartDate("");
+			searchboxvalueEndDate("");
+			searchboxvalueLevel("");		
+		});
+		
+	 
+	my.apiLogsVM = (function(){
+
+		/////JSON DATA/////
+	//	$.getJSON("../../../Resources/data/logJson.txt", function (stuff) {	 
+		$.getJSON("http://wdennss0226/dev/api/diagnostics/logs", function (stuff) {	
+			var listdiagnostics = $.map(stuff, function (item) { return new diagnostics(item) });
+    		self.listdiagnostics(listdiagnostics);
+		});
+		
+		
+		searchboxvalueStartDate.subscribe(function(newValue) {
+			$.getJSON("http://wdennss0226/dev/api/diagnostics/logs?Start=" + newValue, function (data) {
+				var listdiagnostics = $.map(data, function (item) { return new diagnostics(item) });
+	        	self.listdiagnostics(listdiagnostics);
+			});
+		});
+	
+		searchboxvalueEndDate.subscribe(function(newValue) {
+			$.getJSON("http://wdennss0226/dev/api/diagnostics/logs?Finish=" + newValue, function (data) {
+				var listdiagnostics = $.map(data, function (item) { return new diagnostics(item) });
+	        	self.listdiagnostics(listdiagnostics);
+			});
+		});
+		
+		searchboxvalueLevel.subscribe(function(newValue) {
+			$.getJSON("http://wdennss0226/dev/api/diagnostics/logs?Level=" + newValue, function (data) {
+				var listdiagnostics = $.map(data, function (item) { return new diagnostics(item) });
+	        	self.listdiagnostics(listdiagnostics);
+			});
+		});
+		
+		searchboxvalueAllLogs.subscribe(function(newValue) {
+			$.getJSON("http://wdennss0226/dev/api/diagnostics/logs", function (data) {
+				var listdiagnostics = $.map(data, function (item) { return new diagnostics(item) });
+	        	self.listdiagnostics(listdiagnostics);
+			});
+		});
+		
+		
+		
+		var diagnostics = function(data, event) {
+			this.Level = ko.observable(data.Level);
+			this.DateTime = ko.observable(moment(data.DateTime).format('MM/DD/YYYY'));
+		//	this.DateTime = ko.observable(data.DateTime);   
+			this.Message = ko.observable(data.Message);		
+			this.Id = ko.observable(data.Id);
+		};
+		
+		
+		var self = this;
+	    self.listdiagnostics = ko.observableArray([]);
+	    
+	     	
+    this.gridOptions = {
+        	data: self.listdiagnostics,
+        	displaySelectionCheckbox: false,     
+                columnDefs: [  
+        			{field: 'Id', 
+        			displayName: 'Id', 
+        			width: '06%',
+        			cellTemplate:'<a data-bind="attr: { \'href\': \'https://nussproalm.visualstudio.com/DefaultCollection/_git/Sales%20Application/commit/\' , \'class\': \'kgCellText colt\' + $index()}, html: $data.getProperty($parent)" target="_new"></a>' 
+	        		}, 
+	        		{field: 'DateTime', 
+        			displayName: 'Moment.js DateTime', 
+        			//cellFilter: function(data) { return moment(data).format('MMMM Do YYYY, h:mm:ss a')},//
+        			width: '15%'
+	        		},  
+	        		{field: 'DateTime', 
+        			displayName: 'Default DateTime', 
+        			width: '15%'
+	        		},                                                                
+					{field: 'Level',
+					displayName: 'Level',
+					width: '10%',
+					},
+		    		{field: 'Message', 
+		    		displayName: 'Message', 
+		    		width: '50%',        
+		    		},  
+					],   
+			displaySelectionCheckbox: false,
+        	disableTextSelection: false,
+        	canSelectRows: true,
+    
+    };
+    
+}());
+
+ko.applyBindings(my.apiLogsVM);
+
+    </script>
+    
+    
+
+  </body>
+</html>

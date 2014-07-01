@@ -1,0 +1,62 @@
+[
+{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"3PL"
+,"PipeLineSolution_key":1
+}
+,{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"Air Export"
+,"PipeLineSolution_key":2
+}
+,{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"Air Import"
+,"PipeLineSolution_key":3
+}
+,{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"Air Expedite"
+,"PipeLineSolution_key":4
+}
+,{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"Charter"
+,"PipeLineSolution_key":5
+}
+,{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"International"
+,"PipeLineSolution_key":6
+}
+,{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"Ocean Export"
+,"PipeLineSolution_key":7
+}
+,{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"Ocean Import"
+,"PipeLineSolution_key":8
+}
+,{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"Project Management"
+,"PipeLineSolution_key":9
+}
+,{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"Surface FTL"
+,"PipeLineSolution_key":10
+}
+,{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"Surface LTL"
+,"PipeLineSolution_key":11
+}
+,{
+"json_featuretype":"dbo.PipeLineSolution"
+,"ps_description":"Surface Hotshot"
+,"PipeLineSolution_key":12
+}
+]

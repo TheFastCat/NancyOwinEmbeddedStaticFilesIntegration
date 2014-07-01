@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <title>Sales Territories</title>
+
+  <!-- Stylesheets -->  
+  <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css" type="text/css"/> 
+  <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.1/leaflet.fullscreen.css" type="text/css" />
+  <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css" type="text/css" /> 
+    
+  <!-- jquery -->  
+  <script src="../../../../jquery/jquery-2.0.3.min.js"></script>
+  <script src="../../../../jquery-ui/jquery-ui-1.10.4.js"></script>
+    
+  <!-- MapBox, should be able to implement without significant refactoring, but would need to replace LeafLet.js -->
+  <script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js"></script>
+  <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.1/Leaflet.fullscreen.min.js"></script>
+  <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+  <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js"></script>
+
+</head>
+
+<body>
+<div>
+	<label>Sales User ID (enter new id to see a second users territories):</label>
+	<input id="joboMapSalesUserSelect" />
+	<select id="joboMapABCDSelect">
+		<option value= "">Select ABCD</option>
+		<option value= 'A'>A</option>
+		<option value= 'B'>B</option>
+		<option value= 'C'>C</option>
+		<option value= 'D'>D</option>
+	</select>
+	<button id="joboMapClearMap">Clear</button>
+</div>
+<div id="mapJOBOTerritories" style="height: 600px; width: 100%"></div>
+
+</body>
+<script>
+var joboMapSalesUserSelectVal = [];
+var joboMapABCDSelectVal = ['A','B','C','D'];
+
+$(function(){
+	$('#joboMapSalesUserSelect').on('change',function(){
+		joboMapSalesUserSelectVal.push($('#joboMapSalesUserSelect').val().toUpperCase());
+		
+		joboGeoJsonSalesTerritories.setFilter(function (feature, layer) {	
+			return $.inArray(feature.properties.user_id, joboMapSalesUserSelectVal) !== -1;
+		});
+		joboGeoJsonCustomerMarkers.setFilter(function (feature, layer) {	
+			return $.inArray(feature.properties.user_id, joboMapSalesUserSelectVal) !== -1;
+		});
+		mapJOBOTerritories.fitBounds(joboGeoJsonCustomerMarkers.getBounds());		
+	});
+	
+	$('#joboMapABCDSelect').on('change',function(){
+		joboMapABCDSelectVal = $('#joboMapABCDSelect').val();
+		
+		
+		joboGeoJsonCustomerMarkers.setFilter(function (feature, layer) {	
+			return $.inArray(feature.properties.user_id, joboMapSalesUserSelectVal) !== -1
+			&& feature.properties.cb_status == joboMapABCDSelectVal;
+		});
+		
+		mapJOBOTerritories.fitBounds(joboGeoJsonCustomerMarkers.getBounds());		
+	});
+	
+	$('#joboMapClearMap').on('click',function(){
+		joboMapSalesUserSelectVal = [];
+		
+		joboGeoJsonSalesTerritories.setFilter(function (feature, layer) {	
+			return $.inArray(feature.properties.user_id, joboMapSalesUserSelectVal) !== -1;
+		});
+		joboGeoJsonCustomerMarkers.setFilter(function (feature, layer) {	
+			return $.inArray(feature.properties.user_id, joboMapSalesUserSelectVal) !== -1;
+		});
+	});
+});
+
+
+baseMap = L.tileLayer('http://a.tiles.mapbox.com/v3/camronm.g8mkpol1/{z}/{x}/{y}.png',{
+	zoom: 8,
+	maxZoom: 18 		
+});	
+
+mapJOBOTerritories = L.map('mapJOBOTerritories', {
+	center: [39.8282,-98.5795],
+	zoom: 3,
+	layers: [baseMap],
+	dragging: true,		
+	zoomControl: true	
+});
+
+
+//////////////////////////////
+// Sales Territories GeoJson//
+//////////////////////////////
+
+var joboGeoJsonSalesTerritories = L.mapbox.featureLayer()
+	.loadURL ('vSalesTerritories.json') //('../../../../Resources/data/vSalesTerritories.json')	
+	.addTo(mapJOBOTerritories);
+	
+var joboGeoJsonCustomerMarkers = L.mapbox.featureLayer()
+	.loadURL ('../../../../Resources/data/CustomersGeoMarkerDescription.json')	
+	.addTo(mapJOBOTerritories);
+
+/*
+function loadjoboGeoJsonSalesTerritories() {
+	$.getJSON("vSalesTerritories.json", function(data) {		
+	    var geojson = L.geoJson(data, {
+	      filter: function(feature, layer){
+	      	return feature.properties.user_id == joboMapSalesUserSelectVal;
+	      },
+	      onEachFeature: function (feature, layer) {
+	        layer.bindPopup(feature.properties.description);
+	      }
+	    });
+	    geojson.addTo(mapJOBOTerritories);
+	});
+};
+*/
+</script>
+</html>

@@ -1,0 +1,158 @@
+<div id="filteringTest" class='liveExample'> 
+   <p style="color:red">How do I make this list unique?</p>
+    <p>
+    <select id="testUserSelect" data-bind="selectedOptions: salesUsersToShow">
+    	<option value="All">Select Sales User</option>
+    </select>
+    <script>
+    	$.getJSON("../../Resources/data/vABCD_SalesUsers.json", function(data) {
+		    $('#testUserSelect').attr('enabled', 'true');
+			$.each(data, function() {
+			   $('#testUserSelect').append(
+			        $("<option></option>").text(this.user_id).val(this.user_id)
+			   );
+			});
+		});
+    </script>
+  </p> 
+
+  <p style="color:red">And how do I filter the records below based on the selected items above? (multiple select)</p>
+
+  <div class="alertsWidget" data-bind="sortable: leadsToShow()">
+		<div class="dashboard_lead_event" data-bind="text: fullCustomer"></div>							    
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+ko.bindingHandlers.dialog = {
+    init: function(element) {
+        $(element).hide();
+    },
+    update: function(element, valueAccessor) {
+        var value = ko.utils.unwrapObservable(valueAccessor());			
+        if (value) {
+        	//Create Dialog Box
+        	$(function() {	    
+        		var addToMyPlannerDateField = $("#addToMyPlannerDate").val();    		
+        		var allFields = $([]).add(addToMyPlannerDateField);
+			    $( "#dialog-form" ).dialog({
+			      autoOpen: true,
+			      height: 600,
+			      width: 550,
+			      modal: true,
+			      buttons: {
+			        Save: function() {
+			        	$(this).dialog("close");
+			        },
+			        Cancel: function() {
+			        	$(this).dialog("close");				        	
+			        }
+			      },
+			      close: function() {
+			      	$("#addToPlanner")[0].reset();
+			      }				      
+			    });
+			 
+			    $("#create-planner")
+			      .button()
+			      .click(function() {
+			        $( "#dialog-form" ).dialog("open");
+			      });
+		  	});
+        	//$("#dialog-form").dialog("open");        
+        }
+      
+    },
+    timeout: null
+};
+
+//VM for My Alerts Drag and Drop to My Planner//
+var NewBusiness = function (data, event) {	
+	this.OwnerID = ko.observable(data.OwnerID);
+	this.CustomerName = ko.observable(data.CustomerName);
+	this.CustomerNo = ko.observable(data.CustomerNo);
+	this.add  = ko.observable();
+	this.plannerEvent = ko.observable();
+	this.today = ko.observable(spartan.today);
+	this.addToPlannerDate = ko.observable();
+	this.fullCustomer = ko.computed(function() {
+		return this.CustomerName() + " # " + this.CustomerNo();
+	},this);
+	this.plannerEvent = ko.computed(function() {
+		return this.today() + " -- " + this.CustomerName() + " # " + this.CustomerNo();
+	},this);
+};
+
+var myPlanner = function(customers) {
+	this.customers = ko.observableArray(customers);
+};
+
+function newBusinessVM() {
+    var self = this;
+    self.newBusinessLeads = ko.observableArray([]);
+    self.myPlannerTodaysActivities = new ko.observableArray([]);
+    self.myPlannerThisWeeksActivities = new ko.observableArray([]);
+    self.myPlannerNextweeksActivities = new ko.observableArray([]);
+    self.myPlanner3WeekActivities = new ko.observableArray([]);
+    self.myPlannerNote = new ko.observableArray();
+    self.myPlannerNoteCode = new ko.observable();
+    self.addToPlannerCustomerName = new ko.observable(this.CustomerName);
+    self.addToPlannerCustomerNumber = new ko.observable(this.CustomerNo);
+    self.addToPlannerDate = new ko.observable(this.today);
+    self.lastAction = ko.observable();
+	self.lastError = ko.observable();
+	    	
+	self.maximumStudents = 100;
+	self.isTableFull = function(parent) {
+        return parent().length < self.maximumStudents;
+    
+	};
+    
+    self.salesUsersToShow = ko.observable("all");
+    
+    self.leadsToShow = ko.computed(function() {
+    	// Represents a filtered list of users
+        // only those matching the "usersToShow" condition
+        var desiredUser = self.salesUsersToShow();       
+        if (desiredUser == "all") {
+        	return this.newBusinessLeads();
+        } else {
+        	return ko.utils.arrayFilter(this.newBusinessLeads(), function(item) {
+        		return item.OwnerID() == salesUsersToShow();
+        	});
+        }        	
+    },self);
+    
+        // Confirm Delete //
+	self.removeActivity = function(activity){
+		    if (confirm("Are you sure?")) {
+		    	self.myPlannerTodaysActivities.remove(activity);
+		    }
+		    return false;
+	};
+	
+	// Add Activity //
+	self.addActivity = function(){ 
+		self.myPlannerTodaysActivities.push({
+			CustomerName: "",
+			CustomerNo: "",
+			addToPlannerDate: ""
+		});
+	};
+    $.getJSON("../../Resources/data/pipelineNewBusiness.json", function (allData) {
+        var newBusinessLeads = $.map(allData, function (item) { return new NewBusiness(item) });
+        self.newBusinessLeads(newBusinessLeads);
+    });
+    
+    this.updateLastAction = function(arg) {	
+		self.lastAction("Moved " + arg.item.CustomerName());
+    	self.addToPlannerCustomerName(arg.item.CustomerName());
+    	self.addToPlannerCustomerNumber(arg.item.CustomerNo());
+    	self.addToPlannerDate(arg.item.today());
+    };
+   
+};
+ko.applyBindings(newBusinessVM(),$("#filteringTest")[0]);
+</script>

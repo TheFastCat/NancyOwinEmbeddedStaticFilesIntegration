@@ -1,0 +1,202 @@
+﻿
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="images/mapicon.png"/>  
+  <title>Spartan Sales Application</title>
+
+  <!-- Stylesheets -->  
+  <link rel="stylesheet" href="../../jquery/jquery-timepicker-master/jquery.timepicker.css" type="text/css" />
+  <link rel="stylesheet" href="../../KoGrid/KoGrid.css" type="text/css" />
+  <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css" type="text/css"/> 
+  <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.1/leaflet.fullscreen.css" type="text/css" />
+  <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css" type="text/css" />
+  <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.1/leaflet.fullscreen.css' rel='stylesheet' /> 
+  <link rel="stylesheet" href="../../Leaflet/leaflet-sidebar/L.Control.Sidebar.css" type="text/css" />    
+  <link rel="stylesheet" href="../../jquery-ui/cupertino/jquery-ui-1104custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../Resources/css/style.css" type="text/css" />
+  
+  <!--<link rel="stylesheet" href="../../jquery-ui/fff.icon.core.css" type="text/css" /> --> 
+  <!--<link rel="stylesheet" href="../../jquery-ui/fff.icon.icons.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../../font-awesome/css/font-awesome.css" type="text/css" />
+
+
+  <!-- jquery -->  
+  <script src="../../jquery/jquery-2.0.3.min.js"></script>
+  <script src="../../jquery-ui/jquery-ui-1.10.4.js"></script>
+  <script src="../../jquery/jquery-timepicker-master/jquery.timepicker.min.js"></script>
+  <script src="../../jquery/jquery-events-calendar/jquery.eventCalendar.min.js"></script>
+  
+  
+  <!-- Moment js -->
+  <script src="../../momentjs/moment.min.js"></script>
+ 
+  <!--jQueryEventDrag and jQueryEventDrop threedubmedia/jquery drag library -->
+  <script src="../../jquery-drag/jquery.event.drag-2.2.js"></script>
+  <script src="../../jquery-drag/jquery.event.drag.live-2.2.js"></script>
+  <script src="../../jquery-drop/jquery.event.drop-2.2.js"></script>
+  <script src="../../jquery-drop/jquery.event.drop.live-2.2.js"></script>
+
+  <!--knockout -->
+  <script src="../../knockout/knockout-3.1.0.js"></script>
+  <script src="../../knockout/knockout-sortable.js"></script>
+  <script src="../../knockout/knockout.mapping.js"></script>
+  <script src="../../knockout/knockout-postbox.min.js"></script>
+  
+  <!-- KoGrid -->
+  <script src="../../KoGrid/KoGrid.js"></script>
+
+  <!-- d3 -->	
+  <script src="../../d3/d3.min.js"></script>
+
+  
+  <!-- MapBox, should be able to implement without significant refactoring, but would need to replace LeafLet.js -->
+  <script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js"></script>
+  <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.1/Leaflet.fullscreen.min.js"></script>
+  <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js"></script>
+  
+  <!-- Leaflet-->
+  <!-- <script src="../../Leaflet/leaflet-locatecontrol-gh-pages/L.Control.Locate.js"></script> -->
+  <script src="../../Leaflet/leaflet-ajax/leaflet.ajax.min.js"></script>  
+  <script src="../../Leaflet/leaflet-sidebar/L.Control.Sidebar.js"></script> 
+  <!--<script src="../../Leaflet/OverlappingMarkerSpiderfier-Leaflet/OverlappingMarkerSpiderfier-Leaflet.min.js"></script>-->
+  
+  <!-- Google API's -->
+  <script src="//www.google.com/jsapi?key=AIzaSyC6XC4D3Q-6LADnlxgGltHlVCV5kjKPmqI" type="text/javascript"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  
+  <!-- Super-Theme-Switcher 
+  <script src="../../Super-Theme-Switcher/jquery.themeswitcher.min.js"></script>
+  -->
+  
+  <!-- Script Files for Controllers and Models -->
+  <script src="../../Models/bindings.js"></script>
+  <script src="../../Models/spartan.js"></script> 
+  <script src="../../Models/employeesSalesVM.js"></script>     
+  <script src="../../Controllers/tabs.js"></script>
+  <script src="../../Controllers/jsonToCSV.js"></script>
+  
+  
+  <!--
+  <script src="../../Controllers/themes.js"></script> 
+  -->
+      
+  <!-- Preloader -->
+  <script type="text/javascript">
+	$(window).load(function() { $(".spinner, .spinner-text, p.spinner-text").fadeOut("fast"); })  
+  </script>  
+
+</head>
+
+
+<!-- Index is the page loaded by Nancy that controls the visable tabs 
+	each tab is a separate HTML file (Dashboard, Customers...) -->
+
+<body>
+	
+<div id="container">
+	
+<!-- HTML for Spinner Preloader.  Spinner CSS is in style.css -->	
+	<div class="spinner">
+	  <div class="rect1"></div>
+	  <div class="rect2"></div>
+	  <div class="rect3"></div>
+	  <div class="rect4"></div>
+	  <div class="rect5"></div>
+	</div>
+	
+		<div id="tabs" class="ui-tabs-icon">
+		
+			
+			<!--jQueryUI tabs being loaded with AJAX
+			<!--Not currently using the data-hash, but may down the road -->
+			<ul id="nav" class="ui-tabs-nav" >
+					
+<!--  Start of Dropdown Menu -->		
+<nav>
+  <ul>
+    <li id="login">
+      <a id="login-trigger" href="#">User Menu <span>▼</span></a>
+      <div id="login-content">
+             	
+   				<!-- <form> -->
+	          <fieldset id="inputs" style="border:none">
+	          	<select id="salesUserSelect" data-bind="					
+						options: employeesSales,
+						optionsText: 'FullName',
+						optionsValue: 'EmployeeCode'">										
+			 	</select>            
+		<br><br>
+      			<a href="http://synappsbeta.com/Cap+Family+of+Companies/board/9/idea" id="ideaboardstyles" target="_blank"><i class="fa fa-lightbulb-o" target="_blank"> Submit Ideas</i></a>
+         	
+		<br><br>
+			<i id="exportPlannerButton" id="exportPlannerButton" class="fa fa-download">  Download Planner</i>
+	  
+	          <!--  <input id="username" type="email" name="Email" placeholder="Your email address" required> -->  
+	          <!--   <input id="password" type="password" name="Password" placeholder="Password" required>  -->
+	          </fieldset>
+	          <fieldset id="actions">
+	          <a href="https://manage.windowsazure.com/SignOut/Execute">  <input type="submit" id="submit" value="Sign Out"></a>
+	          <!--  <label><input type="checkbox" checked="checked"> Keep me signed in</label>   -->  
+	                 
+	          </fieldset>
+    
+      </div>                     
+    </li>
+  </ul>
+</nav>
+<!--End of Dropdown Menu -->				
+				
+				
+				<li> 
+                    <a href="../../Resources/Views/dashboard.html" data-hash='dashboard' id="dashboardTab"><i class="fa fa-home fa-fw" style="font-size: 23px;"></i>&nbsp; Dashboard</a>
+			    </li> 
+			    
+
+			    <!-- Commented Customers tab for demo only. Working code -->
+			   <!--
+			    <li>
+			    	<a href="../../Resources/Views/customersTab.html" data-hash='customers'><i class="fa fa-search fa-fw"></i>&nbsp; Customers</a>
+			    </li>
+				-->
+				
+				<!--Commented out for demo  
+			    <li>
+			    	<a href="../../Resources/Views/testStuff1.html">TestGoogleCalAPI</a>			  	 	
+			    </li>
+			    
+			  	 -->
+			    
+			    <!-- Test Tabs 	 
+			    <li data-icon="ui-icon-folder-collapsed">
+			    	<a href="testStuff2.html">Test Stuff 2</a>
+			    </li>
+			    <li data-icon="ui-icon-folder-collapsed">
+			    	<a href="testStuff3.html">Test Stuff 3</a>
+			    </li>
+					
+				-->						    
+			</ul>
+			<!-- /nav-->
+			
+			<div id="tabs-1" class="ui-tabs-basic"></div>
+			
+				
+			<div id="tabs-2" class="customers"></div>				
+
+			
+			
+			<div id="tabs-3"></div>			
+			<!-- Test Tabs
+			<div id="tabs-4"></div>
+			<div id="tabs-5"></div>
+			
+			-->
+					
+		</div><!-- /tabs -->
+	</div><!-- /container -->
+
+
+</body></html>

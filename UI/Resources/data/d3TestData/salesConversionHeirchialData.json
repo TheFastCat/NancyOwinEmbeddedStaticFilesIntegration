@@ -1,0 +1,124 @@
+{
+		    "name" : "Transactional Lead",
+		    "type" : "black",
+		    "level" : "gray",
+		    "value" : 15,
+		    "children": [
+		                 {
+		                	 "name": "Hot",
+		                	 "parent": "Transactional Lead",
+		                	 "criteria": "Within 1 day of creation",
+		                	 "type" : "gray",
+		                	 "level" : "red",
+		                	 "value": 4,
+		                	 "children" : [
+		                	               {
+		                	            	   "name": "Activities",
+		                	            	   "parent": "Hot",
+		                	            	   "criteria": "A DSAR activity has been set",
+		                	            	   "type" : "gray",
+		                	            	   "level" : "light blue",
+		                	            	   "value": 4,
+		                	            	   "children" : [
+		                	            	                 {
+		                	            	                	 
+		                	            	                	 "name": "Shipments",
+		                	            	                	 "parent": "Activities",
+		                	            	                	 "criteria": "A DSAR activity has been set",
+		                	            	                	 "type" : "gray",
+		                	            	                	 "level" : "light blue",
+		                	            	                	 "value": 4,
+		                	            	                 }
+		                	            	                 ]
+		                	               }		                	               
+		                	               ]
+		                 },
+		                 {
+		                	 "name": "Warm",
+		                	 "parent": "Transactional Lead",
+		                	 "criteria": "Within 3 day of creation", 
+		                	 "type" : "gray",
+		                	 "level" : "yellow",
+		                	 "value": 7,
+		                	 "children" : [
+		                	               {
+		                	            	   "name": "Activities",
+		                	            	   "parent": "Hot",
+		                	            	   "criteria": "A DSAR activity has been set",
+		                	            	   "type" : "gray",
+		                	            	   "level" : "light blue",
+		                	            	   "value": 4,
+		                	            	   "children" : [
+		                	            	                 {
+		                	            	                	 
+		                	            	                	 "name": "Shipments",
+		                	            	                	 "parent": "Activities",
+		                	            	                	 "criteria": "A DSAR activity has been set",
+		                	            	                	 "type" : "gray",
+		                	            	                	 "level" : "light blue",
+		                	            	                	 "value": 4,
+		                	            	                 }
+		                	            	                 ]
+		                	               },		                	               
+		                	               ]
+		                 },
+		                 {
+		                	 "name": "Stale",
+		                	 "parent": "Transactional Lead",
+		                	 "criteria": "Within 7 day of creation", 
+		                	 "type" : "gray",
+		                	 "level" : "brown",
+		                	 "value": 3,
+		                	 "children" : [
+		                	               {
+		                	            	   "name": "Activities",
+		                	            	   "parent": "Hot",
+		                	            	   "criteria": "A DSAR activity has been set",
+		                	            	   "type" : "gray",
+		                	            	   "level" : "light blue",
+		                	            	   "value": 4,
+		                	            	   "children" : [
+		                	            	                 {
+		                	            	                	 
+		                	            	                	 "name": "Shipments",
+		                	            	                	 "parent": "Activities",
+		                	            	                	 "criteria": "A DSAR activity has been set",
+		                	            	                	 "type" : "gray",
+		                	            	                	 "level" : "light blue",
+		                	            	                	 "value": 4,
+		                	            	                 }
+		                	            	                 ]
+		                	               }		                	              
+		                	               ]
+		                 },
+		                 {
+		                	 "name": "Moldy",
+		                	 "parent": "Transactional Lead",
+		                	 "criteria": "Greater than 7 day from creation", 
+		                	 "type" : "gray",
+		                	 "level" : "black",
+		                	 "value": 1,
+		                	 "children" : [
+		                	               {
+		                	            	   "name": "Activities",
+		                	            	   "parent": "Hot",
+		                	            	   "criteria": "A DSAR activity has been set",
+		                	            	   "type" : "gray",
+		                	            	   "level" : "light blue",
+		                	            	   "value": 4,
+		                	            	   "children" : [
+		                	            	                 {
+		                	            	                	 
+		                	            	                	 "name": "Shipments",
+		                	            	                	 "parent": "Activities",
+		                	            	                	 "criteria": "A DSAR activity has been set",
+		                	            	                	 "type" : "gray",
+		                	            	                	 "level" : "light blue",
+		                	            	                	 "value": 4,
+		                	            	                 }
+		                	            	                 ]
+		                	               }
+		                	               ]
+		                 }
+		    ]
+			}

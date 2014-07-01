@@ -1,0 +1,122 @@
+[
+{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"BRAD RODGERS"
+,"user_id":"BRRO"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"BRIAN TIBBETTS"
+,"user_id":"BRTI"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"CECILIA APODACA MANCHA"
+,"user_id":"CEAP"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"DAVE BUGOS"
+,"user_id":"DABU"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"DAVE WESTMEYER"
+,"user_id":"DAWS"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"EPPIE MARQUEZ"
+,"user_id":"EPMA"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"EVA ONTIVEROS"
+,"user_id":"EVON"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"JP MARTINEZ"
+,"user_id":"JAMT"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"JAMES SMEJKAL"
+,"user_id":"JASM"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"MELISSA MULDER"
+,"user_id":"MEMU"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"MICHAEL CONNORS"
+,"user_id":"MICO"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"NATHAN BROWNING"
+,"user_id":"NABR"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"NANCY VORDERSTRASSE"
+,"user_id":"NAVO"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"PAUL LEWIS"
+,"user_id":"PALE"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"PETER RINALDI"
+,"user_id":"PERI"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"REGAN PFLEIGER"
+,"user_id":"REPF"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"REBECCA WEAVER"
+,"user_id":"REWE"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"RICHARD MOONEY"
+,"user_id":"RIMO"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"RON DAVIS"
+,"user_id":"RODV"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"STACY FARLEY"
+,"user_id":"STFA"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"TIMOTHY KOVACIC"
+,"user_id":"TIKO"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"TREVOR GARNER"
+,"user_id":"TRGA"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"TRACY LISKOWSKI"
+,"user_id":"TRLI"
+}
+,{
+"json_featuretype":"dbo.vABCD_SalesUsers"
+,"full_name":"DISPATCH DISPATCH"
+,"user_id":"XXXX"
+}
+]

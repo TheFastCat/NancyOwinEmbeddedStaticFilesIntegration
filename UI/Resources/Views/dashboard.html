@@ -1,0 +1,319 @@
+<head>
+	<!-- script files -->
+	<script src="../../Models/spartan.js"></script>
+	<script src="../../Models/db_MapVM.js"></script>
+	<script src="../../Controllers/accordion.js"></script>
+	<script src="../../Controllers/drag.js"></script>
+	<script src="../../Models/db_MyPlannerVM.js"></script>
+	<script src="../../Models/db_MyAlertsVM.js"></script> <!--Must load after db_MyPlanner-->
+	<script src="../../Models/dialog_AddActivityVM.js"></script>
+	<script src="../../Models/dialog_EditActivityVM.js"></script> 
+	<script src="../../Models/dialog_AlertShipmentDetailsVM.js"></script>  
+	<script src="../../Models/db_ConversionTree.js"></script>
+	<script src="../../Models/spartanVM.js"></script> 
+</head>   
+
+<!---------------------------------------------------------------------------------------------->		
+<!-- DASHBOARD CONTENT ------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------->
+	<body>
+		
+		<div id="dashboardContent" class="container ui-corner-all">	
+			<!--------------------->
+			<!--box1 == MyAlerts -->
+			<!--------------------->
+			<div id="myAlerts" class="ui-widget">    
+				<div id="box1" class="ui-widget-content">			
+					<div class="ui-widget-header">My Alerts</div>
+					<div id="accordionBox3">
+											
+						<h3 id="abcdHeader">ABCD Customers</h3>							
+							<div class="abcdheaderpadding">
+								<table id="abcdChart">
+							<!-- <table id="abcdChart" style="width:100%; height:30px;">  -->
+									<tr>
+										<td id="abcdChartA" title="A" class="abcdChart">A</td>
+										<td id="abcdChartB" title="B" class="abcdChart">B</td>
+										<td id="abcdChartC" title="C" class="abcdChart">C</td>
+										<td id="abcdChartD" title="D" class="abcdChart">D</td>
+									</tr>
+								</table>	
+								<hr />					
+												
+								<div class="abcdpadding" data-bind="foreach: Priority1and2">									
+									<div>
+										<i class="fa fa-plus-square" id="abcdiconstyles" data-bind="click: addActivityFromAlert"></i>  
+										<span class="abcdPaddingWarningIcon" data-bind="css: {'fa fa-exclamation-triangle': SalesPriority() == 1}"></span>							
+										
+										<ui id="abcdCustomerName" data-bind="text: CustomerName"></ui><br>
+										<ui class="cityStateFontSize" data-bind="text: City"></ui>	
+										<ui class="cityStateFontSize" data-bind="text: State"></ui>				
+										<hr />
+									</div>
+								</div>
+							
+							</div>	
+						
+						<h3 id="newCustomerHeader">Transactional Lead</h3>							 
+								<div class="abcdpadding" data-bind="template: {name: 'myAlertsNewCust_and_ReturnCust-template', foreach: newCustomers}"></div>	
+
+																
+						<h3 id="quotesPendingHeader">Quotes Pending</h3>
+							<div class="abcdpadding" data-bind="template: {name: 'myAlertsWidgetSection-template', foreach: quotesPending}"></div>
+							
+									
+						<h3 id="leadNotesHeader">Lead Notes</h3>
+							<div class="abcdpadding" data-bind="foreach: leadNotes">								
+								<div>
+									<i class="fa fa-plus-square" id="leadNotesIconStyles" data-bind="click: addActivityFromAlert"></i>								
+									<ui id="leadNotesHeaderCustomerName" data-bind="text: CustomerName"></ui><br>
+									<ui id="leadNotesHeaderCustomerCityState" class="cityStateFontSize" data-bind="text: leadNoteCityState"></ui><br>
+									<hr />
+								</div>													    
+							</div>
+						
+						<h3 id="serviceFailuresHeader">Service Failures</h3>
+							<div class="abcdpadding" data-bind="template: {name: 'myAlertsWidgetSection-template', foreach: serviceFailures}"></div>			
+				
+						
+						<h3 id="returningCustomerHeader">Returning Customers</h3>							
+							<div class="abcdpadding"  data-bind="template: {name: 'myAlertsNewCust_and_ReturnCust-template', foreach: returningCustomers}"></div>	
+
+						
+				
+					</div><!--/accordionBox2-->			
+				</div><!--/box1 -->
+			</div>
+  			
+			<!----------------------->
+			<!-- box2 == MyPlanner -->
+			<!----------------------->
+						    
+				<div id="box2">	
+					<div class="ui-widget-header">My Planner
+					<!--	<i id="exportPlannerButton" class="fa fa-file-excel-o" style="float: right; cursor: pointer; margin-right: 10px; margin: 3px"></i>-->	
+						<i class="fa fa-plus-square" id="myplannersquareicon" data-bind="click: addActivity"></i>	
+					</div>
+						<div id="accordionBox2">												
+							<h3 id="todayHeader"></h3>
+								<div data-bind="template: {name: 'plannerWidgetSection-template', foreach: myPlannerTodaysActivities}"></div>
+							
+							<h3 id="thisWeekHeader"></h3>													        
+								<div data-bind="template: {name: 'plannerWidgetSection-template', foreach: myPlannerThisWeeksActivities}"></div>
+							
+							<h3 id="nextWeekHeader"></h3>								
+								<div data-bind="template: {name: 'plannerWidgetSection-template', foreach: myPlannerNextWeeksActivities}"></div>
+								
+							<h3 id="thirdWeekHeader"></h3>
+								<div data-bind="template: {name: 'plannerWidgetSection-template', foreach: myPlannerThirdWeeksActivities}"></div>
+						</div>															
+				</div><!--/box2-->
+				
+				<!---------------->	
+				<!--Dialog Boxes-->
+				<!---------------->					
+					<!-- Add Planner Activity -->												
+					<div id="addActivityDialog" title="Add Planner Activity"></div>
+					
+					<!-- Edit Planner Activity -->
+					<div id="editActivityDialog" title="Edit Planner Activity"></div>
+							
+					<!-- Add Planner Activity From Alert -->					
+					<div id="alertAddActivityDialog" title="Add Planner Activity"></div>
+
+					<!-- Alert Shipment Detail -->					
+					<div id="alertShipmentDetailDialog" title="Alert Shipment Details"></div>
+					
+					
+				<!-- /Activity Dialog Boxes-->
+					
+			<!------------------------------->	
+			<!--box3 == Conversion Metrics -->
+			<!------------------------------->		
+			<div id="box3" class="ui-widget" data-bind= "foreach: editPlannerActivity">				
+				<!--
+				<div id="conversionLevel1" style="height:10em"></div>
+				<div id="conversionLevel2" style="height:6em; text-align: center">
+					<span>8</span>
+					<i class="fa fa-phone fa-3x" style="padding: .5em .5em .7em .2em;"></i>
+					<i class="fa fa-users fa-3x" style="padding: .5em .2em .7em .5em;"></i>
+					<span>5</span>
+				</div>
+				<div id="conversionLevel3" style="height:6em; padding-top: .7em; text-align: center">
+					<div style="padding-bottom: .3em"> Average Days to Convert = </div><br /> 
+					<div> Average Activities to Convert = </div>				
+				</div>
+				-->				
+			</div>
+			
+			<!------------------->
+			<!-- Dashboard Map -->
+			<!------------------->			
+	
+			<div id="dashboardMap" class="map">		
+				
+				<!-- Map Controls -->
+				<div id="map">
+					<!--Not currently using, also need to enable in db_MapVM
+					<button class="sidebarToggle"><i class="fa fa-calendar fa-lg"></i></button>
+					-->
+					<button class="optimizeRouteButton"><i class="fa fa-road fa-lg"></i></button>
+				</div>
+				
+				<!--Not currently using, also need to enable in db_MapVM 								
+				<div id="sidebar"></div> 
+				-->
+				    				
+			    <div id="optimizedRouteMapContainer" title="Suggested Route">  			    		
+				    <div id="optimizedRouteMapCanvas"></div>
+				    <table>
+				    	<tr>    
+					        <td width="10%">
+						        
+						        <div>
+					        	    <strong>Date to Route:</strong>
+							        <input id="dateToRoute" placeholder="mm/dd/yyyy"/><br />
+					        	    
+					        	    <strong>Start Location:</strong>
+							        <input type="text" id="start" /><br />
+							        
+							        <strong>End Location:</strong>
+							        <input type="text" id="end"/><br />
+							       					    		 
+						    		<strong>Alerts to Route:</strong><br />
+							        
+									<select id="alertsToRouteInput" multiple size="15" data-bind="								
+										options: abcdAlerts,
+										optionsText: 'CustomerName',
+										optionsValue: 'CustomerId'">										
+							  		</select>
+									
+						    		
+			      					<input type="submit" onclick="calcRoute()">
+			      					<input type="reset" onclick="clearRoute()">
+		      					</div>
+		      					
+		      				</td>
+	      				</tr>
+	      				<tr>		      				
+		      				<td width="30%">
+			      				<div id="directions_panel"></div>
+					    	</td>					    	
+			    		</tr>
+			    	</table>
+			    	
+			    </div>  
+				
+				<!-- Map Optimized Route -->								
+							
+			</div><!--/dashboardMap -->		
+		</div><!--/dashboardContent-->
+	
+</body>
+</html>
+
+
+<script type="text/javascript">
+	
+	$body = $("body");
+	$(document).on({
+		//load: function() { $body.addClass("loading");    }
+		ajaxStart: function() { $body.addClass("loading");    },
+	    ajaxStop: function() { $body.removeClass("loading"); }    
+	});      
+
+
+</script>
+
+<!-- Templates for binding -->
+
+<!-- My Planner Template -->
+<script type="text/html" id="plannerWidgetSection-template">
+	<div id="myplannertemplate">					
+		<i class="fa fa-pencil-square-o fa-lg" id="myplannertemplate_pencilicon" data-bind="click: editActivity"></i>
+		<span class="myPlannerDateText" data-bind="text: StartDate"></span>	
+		<span class="myPlannerCustomerName" data-bind="text: CustomerName;"></span><br>
+		<span class="myPlannerIcons" data-bind="css: {'fa fa-users': NoteCode() == 'DSMR'}"></span>
+		<span class="myPlannerIconPhone" data-bind="css: {'fa fa-phone fa-lg': NoteCode() == 'DSAR'}"></span>
+		<span class="myPlannerIconContactName" data-bind="text: ContactName"></span>
+		<span class="myPlannerTimeText" data-bind="text: StartTime"></span>
+		<br/>
+		<hr/>																													  															  						
+	</div> 
+</script>
+
+
+<!-- Quotes Pending and Service Failures Template -->
+<script type="text/html" id="myAlertsWidgetSection-template">
+	<div>
+		<div>
+		<!--	<i class="fa fa-plus-square" style="float: right; cursor: pointer" data-bind="click: addActivityFromAlert"></i>	 -->
+			<i class="fa fa-list fa-lg" id="listicon_myalerts" data-bind="click: shipmentTrackingNumberDetailsOpen"></i>													
+			<!-- ko if: ShpUser() === my.salesUserFilter -->
+			<ui id="quotesAndServiceShpUser" data-bind="text: ShpCompany"></ui><br>
+			<label class="cityStateFontSizeLabel">Shipper:</label>
+			<ui class="cityStateFontSize" data-bind="text: ShpCity"></ui>
+			<ui class="cityStateFontSize" data-bind="text: ShpState"></ui>
+			<br>
+			
+			<!-- /ko -->								
+										
+			<!-- ko if: ConUser() === my.salesUserFilter -->
+			<ui id="quotesandServiceConUser" data-bind="text: ConCompany"></ui><br>
+			<label class="cityStateFontSizeLabel">Consignee:</label> 
+			<ui class="cityStateFontSize" data-bind="text: ConCity"></ui>
+			<ui class="cityStateFontSize" data-bind="text: ConState"></ui>
+			<br>
+			<!-- /ko -->
+									
+			<!-- ko if: ThdUser() === my.salesUserFilter -->  
+			<ui id="quotesAndServiceThdUser" data-bind="text: ThdCompany"></ui><br>
+			<label class="cityStateFontSizeLabel">Third Party:</label>
+			<ui class="cityStateFontSize" data-bind="text: ThdCity"></ui>
+			<ui class="cityStateFontSize" data-bind="text: ThdState"></ui>
+			<!-- /ko -->
+			<hr/>
+		</div>			
+	<!--	<ui data-bind="text: SVFNote"></ui>	-->	
+	
+	
+	</div> 
+
+</script>
+
+
+<!-- New Customers and Returning Customers Template -->
+<script type="text/html" id="myAlertsNewCust_and_ReturnCust-template">
+	<div>
+		<i class="fa fa-list fa-lg" id="newcustomerdetaillisticon" data-bind="click: shipmentDetailsOpen"></i>
+<!--    <i class="fa fa-plus-square" style="float: right; cursor: pointer" data-bind="click: addActivityFromAlert"></i>	-->							
+		<ui id="newCustomersReturningCustomersCustomerName" data-bind="text: CustomerName"></ui><br>
+		<ui class="cityStateFontSize" data-bind="text: City"></ui>	
+		<ui class="cityStateFontSize" data-bind="text: State"></ui>
+	   <hr>	
+	 </div>								
+
+</script>
+
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+  $('#login-trigger').click(function(){
+    $(this).next('#login-content').slideToggle();
+    $(this).toggleClass('active');          
+    
+    if ($(this).hasClass('active')) $(this).find('span').html('&#x25B2;')
+      else $(this).find('span').html('&#x25BC;')
+    })
+});
+</script>
+
+
+
+
+<div class="modal"><!-- Place at bottom of page --></div>
+
+

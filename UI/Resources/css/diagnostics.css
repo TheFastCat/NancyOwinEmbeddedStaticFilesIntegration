@@ -1,0 +1,198 @@
+	
+		html {
+			font-family: 'Segoe UI', Frutiger, "Frutiger Linotype", Arial, sans-serif; 
+			-webkit-text-size-adjust: 100%; 
+			-ms-text-size-adjust: 100%;
+		}
+     		
+		body {
+			padding-top: 10px;
+		}
+
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+
+ 
+        .fullName{    font-weight: bold;
+            font-size: 15px;
+        }
+
+        .gitCommit {
+            font-weight: bold;
+            font-size: 13px;
+            color: #FF5050;
+        }
+
+        .stronglyNamed {
+            font-weight: bold;
+            font-size: 13px;
+            color: #FF6600;
+        }
+        
+        .version {
+            font-weight: bold;
+            font-size: 13px;
+            color: #29863F;
+        }
+        
+        
+        #content {
+			padding:10px 10px;
+			border:2px solid gray;
+			margin:10px 30px;
+			width:47%;
+			background-color:#DFE8F5;      		    	
+        }
+        
+        
+       .form-group {
+        	padding:10px 10px;
+			width:70%;
+        }
+        
+        
+        h2{
+        	margin: 0px auto;
+        	margin-bottom: 10px;
+        	margin-left: 30px;
+        }
+        
+        h3 {
+        	margin: 0px auto;
+        	margin-bottom: 4px;
+        	margin-left: 10px;
+        }
+        
+        div .form-group {
+        	width: 70%;
+        	margin: 0px auto;
+        }
+        
+        hr {
+        	border-top: 1px solid #524A4A;
+        }
+        
+        form {
+        	margin-bottom: 10px;
+        }
+        
+        .gridStyle {
+			border: 1px solid rgb(212,212,212);
+		 	width: 1200px; 
+		 	height: 600px;
+		 	margin: 20px 10px;
+		}
+		
+		.selectedItems{
+			float: left; 
+		}
+		
+		#startdate {
+			margin-left: 5px;
+		}
+		
+		#enddate {
+			margin-left: 5px;
+		}
+		
+		#leveldropdown {
+			margin-top: 7px;
+			margin-left: 5px;
+			margin-right: 50px;
+		}
+		
+		#submitbutton {
+			margin-top: 15px;
+			margin-left: 40px;
+		}
+		
+		#resetbutton {
+			margin-top: 15px;
+			margin-left: 40px;
+		}
+	
+		label {
+			margin-top: 15px;
+			margin-left: 8px;
+		}
+		
+		.ui-datepicker{ z-index: 9999 !important;}
+		
+
+		@media only screen 
+		and (min-device-width : 768px) 
+		and (max-device-width : 1024px) 
+		and (orientation : landscape) { 
+			.gridStyle {
+			border: 1px solid rgb(212,212,212);
+		 	width: 950px; 
+		 	height: 550px;
+		 	margin: 0px 0px;
+			}
+			.label {
+				margin-left: 30px;
+			}
+			
+		}
+		
+		.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+			font-size: 1.0em;
+		}
+		
+		.glyphicon {
+			top: -11px;
+			left: -27px;
+		}
+		
+		.kgHeaderButtonArrow {
+			border-color: #0069D6 transparent transparent transparent;
+		}
+		
+		.kgHeaderButton {
+			background-color: transparent;
+		}
+		
+		.icon-search {
+			top: -11px;
+			left: -27px;
+		}
+		
+		
+	
+/* For spinner */		
+/* Start by setting display:none to make this hidden.
+Then we position it in relation to the viewport window
+with position:fixed. Width, height, top and left speak
+speak for themselves. Background we set to 80% white with
+our animation centered, and no-repeating */
+
+
+
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .4 ) 
+                url(../../Resources/Images/ajax-loader-small.gif)  
+                50% 50% 
+                no-repeat;
+}
+
+
+body.loading {
+    overflow: hidden;   
+}
+
+
+body.loading .modal {
+    display: block;
+} 
+	
+
+

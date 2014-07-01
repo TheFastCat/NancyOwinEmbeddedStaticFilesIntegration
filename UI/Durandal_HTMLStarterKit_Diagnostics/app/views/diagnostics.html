@@ -1,0 +1,34 @@
+<section>
+	<h2>API Logs</h2>
+ 	<br>
+	<form>
+	
+	<label for="startdate">All logs since a date...</label>
+	<input type="text" id="startdate" name="startdate">
+	<label for="enddate">All logs until a date..</label>
+	<input type="text" id="enddate" name="enddate">
+	
+	<!--	<label>All logs since a date:</label><input id="startdate" placeholder=" mm/dd/yyyy" type="text"/><br />   -->
+	<!--	<label>All logs until a date:</label><input id="enddate" placeholder=" mm/dd/yyyy" type="text"/><br />     -->		
+		
+		<label>Level:</label>
+		<select id ="leveldropdown">
+			<option value= null ></option>
+			<option value="ERROR">ERROR</option>
+			<option value="TEST">TEST</option>
+			<option value="INFO">INFO</option>
+			<option value="DEBUG">DEBUG</option>
+		</select>
+		
+		<div id="resetbutton">
+			<input type="reset" value="Reset">
+		<div>
+		
+	</form>
+	
+	<div class="gridStyle" data-bind="koGrid: gridOptions"></div>
+
+    </div><!-- /.container -->
+
+
+</section>

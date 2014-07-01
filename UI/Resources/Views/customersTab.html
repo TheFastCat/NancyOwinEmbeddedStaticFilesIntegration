@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="../../Models/customersTab/ct_MapVM.js"></script>
+<script src="../../Models/customersTab/ct_customersGrid.js"></script>
+<script src="../../Models/customersTab/ct_filtersVM.js"></script>
+<script src="../../Models/customersTab/ct_shipmentsGrid.js"></script>
+<script src="../../Models/customersTab/ct_MasterVM.js"></script>
+</head>
+
+<div id="customersTab" class="container ui-corner-all">
+
+	<div id="customersNorthPanel">			
+		<div style="padding: 1.0em;">
+			<label>Customer Name Contains:</label>
+			<input id="customerNameContainsInput" type="text" />
+			<label>Customer Number:</label>
+			<input id="customerNumberInput" type="text" />
+			<label>Status: </label>
+			<select id="customersTabABCDSelect">
+				<option value= "">Select ABCD</option>
+				<option value= 'A'>A</option>
+				<option value= 'B'>B</option>
+				<option value= 'C'>C</option>
+				<option value= 'D'>D</option>
+			</select>
+			<!--
+			<textarea data-bind="text: ko.toJSON(selectedCustomerGridRow)"></textarea>
+			-->
+			<button id="customersTabNorthPanelResetButton">Clear</button>		
+		</div>	
+	</div>
+	<div>		
+		<div id="customersMap" class="map">	
+			<button class="sidebarToggle"><i class="fa fa-table fa-lg"></i></button>
+			<button id='northShowHideButton' class="leaflet-control-top-right"><i class="fa fa-wrench fa-lg"></i></button>
+		</div>
+	</div>							
+	<div id="customersSidebar">
+		<div id = westCustomerAllPanel>
+			<div id="customersGrid" style="width: 100%">
+				<div data-bind="koGrid: gridOptions" style="height: 650px;"></div>
+				
+				<div id="alertAddActivityFromGridRowDialog" title="Add Planner Activity" data-bind="jqDialog: true"></div>
+	
+			</div>
+		</div>
+	</div> 
+	
+	<div class="customerMapFooter" id="customersSouthPanel" data-bind="koGrid: shipmentGridOptions"></div>
+	
+</div>
+
+

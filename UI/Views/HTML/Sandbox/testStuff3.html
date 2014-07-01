@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript">
+	        $.getJSON($("link[rel='vABCD_SalesUsers']").attr("href"), function (data) {
+	        //$.getJSON("../../Resources/data/vABCD_SalesUsers.json", function (data) {
+	            $('#salesUserSelect').attr('enabled', 'true');
+	            $.each(data, function () {
+	                $('#desiredUserSelect').append(
+	                     $("<option></option>").text(this.user_id).val(this.user_id)
+	                );
+	            });	            
+        	});
+
+		</script>
+		<script src="../../Controllers/accordion.js"></script>
+	</head>
+	<body>
+		
+		<div class="container">
+			<select id="desiredUserSelect" data-bind="{value: salesUsersToShow}">
+				<option value="all">Select Sales User</option>
+		    </select>
+			<div id="alerts_planner">    
+				<div id="box3" class="ui-widget-content">			
+					<div class="ui-widget-header">My Alerts (Pipeline Leads)</div>
+					<div id="accordionBox2">					
+						<h3>New Business</h3>										
+							<div id="postboxNewBusinessWidget" class="alertsWidget" data-bind="sortable: leadsToShow">
+								<div class="dashboard_lead_event" data-bind="text: FullCustomer"></div>					    
+							</div>						
+						<h3>Quotes Pending</h3>							   
+							<div id="postboxQuotesPendingWidget" class="alertsWidget" data-bind="sortable: leadsToShow">
+								<div class="dashboard_lead_event" data-bind="text: QuoteAlert"></div>							    
+							</div>	
+						<h3>Lead Notes</h3>
+							<div id="postboxLeadNotesWidget" class="alertsWidget" data-bind="sortable: leadsToShow">
+								<div class="dashboard_lead_event" data-bind="text: LeadNoteAlert"></div>							    
+							</div>
+						<h3>SVF's</h3>	
+							<div>
+								<p>We have a SP for this but wanted to think about what to show</p>
+								<ul>
+								<li>Should we show the note?</li>
+								<li>Should we show for any party or only paying party?</li>
+								<li>Should we show for all parties?</li>
+								</ul>
+							</div>
+					</div><!--/accordionBox2-->			
+				</div><!--/box2-->
+			</div>
+		</div>
+
+	</body>
+</html>
+
+<script src="../../Models/db_MyAlertsVM.js"></script> 

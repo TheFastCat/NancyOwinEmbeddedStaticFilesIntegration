@@ -1,0 +1,1283 @@
+/* //////////////////////////
+ * Create max screen viewport 
+ * ////////////////////////*/
+
+#container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/*  //////////////////////
+ *   CSS spinner bar   */
+/*  ////////////////// */
+.spinner {
+  position: fixed;
+  background-color:#FFFFFF;
+  z-index: 10000;
+  margin: 0px auto;
+  width: 100%;
+  height: 100%; 
+  text-align: center;
+  color: black;
+  opacity: 0.5;
+}
+
+.spinner > div {
+  background-color: #333;
+  height: 80px;
+  width: 17px;
+  margin-top: 300px;
+  display: inline-block;
+  
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay {
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% { 
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+
+/* //////////////////////////
+ * Theme Switcher 
+ * ////////////////////////*/ 
+#switcher {
+	float: right;
+	position: absolute;	
+	margin: 5px 10px 0px 10px;
+} 
+ 
+ 
+/* ////////////////////////////////////
+ * Position and style dashboard widgets
+ * //////////////////////////////////*/
+#box1 { 
+    position: absolute;  
+    float: left; 
+    width: 24.7%; 
+    height: 94%;  
+}
+ 
+#box2 { 
+    position: absolute;
+    left: 25%; 
+    width: 34%; 
+    height: 37%;
+}
+ 
+#box3 {
+    left: 59%; 
+    width: 41%; 
+    height: 41%;
+    position: absolute;
+}
+ 
+#box4 {
+    position: absolute;
+    border: 5px groove rgba(255,255,255,0.6);
+    border-radius: 0px;
+    float: left; 
+    top: 53%;
+    width: 13%; 
+    height: 44%;  
+}
+ 
+#dashboardMap {
+    left:25%; 
+    top:51%; 
+    width:75%; 
+    height:49%; 
+    padding: 0;
+    position: absolute;
+}
+
+.bar {
+	margin-bottom: 0px;
+	color:#141414;
+/*	text-align: center;  */
+/*	background: -webkit-gradient(linear, left top, left bottom, from(#deedf7), to(#3baae3));  */
+	background-color: #848484;
+/*	-webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.25)));  */
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 3px;
+}
+.abcdChart {
+	border: 2px solid #8E8D8D;   
+	width:25%; 
+	height:30px; 
+	background-color:#e0e0e0; 
+	border-radius:2px;
+}
+
+.abcdChartSelected {
+	border: 2px solid #766f6f;
+	background-color: #bab8b8;
+}
+ 
+/* ////////////////////////////////////////////////////////////////
+ * Tabs to make text and Icon one line and tab body to fill screen 
+ * /////////////////////////////////////////////////////////////*/
+.ui-tabs-icon {
+    float: left;
+    margin: -0.2em 0.4em 0 -0.4em;
+    height:100%; 
+    width:100%;
+}
+ 
+/* //////////////////////////////////////
+ * Toggle dashboard div on user events
+ * ///////////////////////////////////*/
+.added {
+    background: rgba(255,255,255,0.8);
+    left: 17.5%; 
+    width: 475px; 
+    height: 600px;
+    position: absolute;
+    z-index: 1000;
+}
+ 
+/* //////////////////
+ * Widget Placeholders
+ * ////////////////*/
+.dragPH {
+    background-color: #fff; 
+    background-image: 
+        linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+        linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+}
+ 
+/* ////////////////
+ * Drag elements 
+ * ////////////////*/
+.drag {
+    position: absolute;
+    border: 3px outset #A8A3A3;
+    background: rgba(255,255,255,0.1);
+    height: auto;
+    width: auto;
+    top: 14%;   
+    resize: both; 
+    overflow: hidden; 
+    padding: 5px;
+}
+
+.handle { /*Not using now, but could be implemented with drag functionality*/
+    height: 20px;
+    border-bottom: 1px solid #EEE;
+    background-color: #ffffff;
+    cursor: move;
+    background:
+        radial-gradient(black 15%, transparent 16%) 0 0,
+        radial-gradient(black 15%, transparent 16%) 8px 8px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+        background-color:#282828;
+        background-size:16px 16px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.dragPH {
+    position: absolute;
+    height: auto;
+    width: auto;
+    top: 14%;   
+    border: 3px outset #A8A3A3;
+    background: rgba(255,255,255,0.1);
+    resize: both; 
+    overflow: hidden; 
+    padding: 5px;
+    border-radius: 15px;
+}
+ 
+.handlePH {
+	height: 18px;
+	border-bottom: 1px solid #EEE;
+	cursor: move;
+	background: 
+	    radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent),
+	    radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent) 50px 50px,
+	    linear-gradient(#A8B1BB 8px, transparent 8px) 0 -4px,
+	    linear-gradient(90deg, #A8B1BB 8px, transparent 8px) -4px 0;
+	    background-color: slategray;
+	    background-size:100px 100px, 100px 100px, 50px 50px, 50px 50px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+#draggable, #draggable2 {  
+    padding: 0; 
+    float: left; 
+    margin: 0 0 0 0; 
+}
+#draggable p { 
+    cursor: move; 
+}
+
+/* //////////////////////////////
+ * Table, Table Rows, Table Cells
+ * ///////////////////////////// */
+ 
+.slickGridRed {
+    color: red;
+    font-size: large;
+    text-align: center;
+}
+ 
+/* //////////////////////
+ * Map div and containers
+ * ////////////////////*/
+#map { 
+    width: 100%; 
+    height: 100%; 
+}
+
+.map { 
+    width: 100%; 
+    height: 100%; 
+    position: absolute;
+    border: 2px solid #A8A3A3;
+    background: rgba(255,255,255,0.1);   
+}
+
+ 
+.leaflet-container:-webkit-full-screen { 
+    width: 100% !important; 
+    height: 100% !important; 
+}
+
+
+.sidebarToggle, .leaflet-control-top-right, .optimizeRouteButton {
+	position: absolute;
+	z-index: 1;
+	top: .5em;
+	left: .3em;
+	padding: .1em;
+	background-color: #FFFFFF; 
+}
+
+/* /////////////////////////////
+ * My Alerts and My Planner
+ * //////////////////////////*/
+ 
+.dashboard_lead_event {
+    background-color: rgba(180,180,180,0.25);   
+    border-radius: 0px;
+    margin: 2px;
+    text-align: left;
+    width: 100%;
+    cursor: move;
+}
+ 
+.myAlertsContent {
+    padding: 0;
+}
+  
+.new div {
+    float: left;
+}
+ 
+.note {
+    font-style: italic;
+    font-size: .75em;
+    color: #888;
+    margin-bottom: 10px;
+}
+ 
+.count {
+    color: #666;
+}
+ 
+.ready {
+    color: green;
+}
+
+#message, #error {
+	font-size: .75em;
+	margin-top: 10px;
+	left: 550px;
+	background-color: orange;
+	color: #444;
+	padding: 2px;
+	width: 500px;
+	text-align: center;
+	border-radius: 0px;
+	box-shadow: 2px 2px 2px #999;
+	position: absolute;
+}
+ 
+#error {
+	background-color: #ff3333;
+	color: #ddd;
+}
+ 
+.centerWrapper {
+	text-align: center;
+}
+
+/* /////////////////////////////////////////////
+ * use a semi-transparent image for the overlay
+ * ///////////////////////////////////////////*/
+.overlayOuter{
+	background:#000;
+	opacity:0.7;
+	display:none;
+	height:100%;
+	left:0;
+	position:absolute;
+	top:0;
+	width:100%;
+	z-index:100001;
+ }
+
+.overlayInner{
+	position:absolute;
+	top:40%;/*or whatever*/
+	left:40%; /*or whatever*/
+	width:500px;
+	z-index:100001;
+ }
+ 
+.dialog {
+	display: none;
+}
+
+/* //////////////////
+ * Conversion Metrics
+ * ////////////////*/
+div.bars {
+    display: inline-block;
+    width: 20px;
+    height: 75px;   /* We'll override height later */
+    background-color: teal;
+}
+
+/* //////////////
+ * Customers Tab
+ * ////////////*/
+#customersNorthPanel {
+	font-weight: bold;
+	display:inline;
+}
+	
+#customersTabNorthPanelResetButton {
+	margin-left: 10px;
+}	
+	
+#customersMap {
+	width:100%; 
+	height:60%; 
+	max-height:100%;
+	padding: 0;
+	border-radius: 0px;
+}
+
+.customerMapFooter {
+	position:absolute;
+	bottom:0;
+	width:100%;
+	height:25%;  
+	background:#6cf;
+}
+
+#accordionBox2 {
+	border-right: 1px solid #A9A;
+	border-left: 1px solid #A9A;
+	border-top: 1px solid #A9A;
+}
+
+hr {
+	border-style: solid;
+	color: #CCCCCC;
+}
+
+input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button, button {
+	align-items: flex-start;
+	text-align: center;
+	cursor: default;
+	color: buttontext;
+	padding: 4px 6px 3px;
+	border: 1px solid buttonface;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	background-color: buttonface;
+	box-sizing: border-box;
+}
+
+table {
+	display: table;
+/*	border-spacing: 3.0px;     */
+	border-color: #FFFFFF;
+	color: #373030;
+/*	border: solid #CCCCCC 1px;  */
+}
+
+
+/* Small Spinner for Ajax calls */
+/* Start by setting display:none to make this hidden.
+   Position it in relation to the viewport window
+   with position:fixed.  Background is set to .0, but could be changed to .8 to add white with
+   our animation centered, and no-repeating */
+
+.modal {
+	display:    none;
+	position:   fixed;
+	z-index:    1000;
+	top:        0;
+	left:       0;
+	height:     100%;
+	width:      100%;
+	background: rgba( 255, 255, 255, .0 ) 
+	            url('../../Resources/Images/ajax-loader.gif') 
+	            50% 50% 
+	            no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+	overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+	display: block;
+}
+
+.ui-dialog .ui-dialog-title {
+	50%;
+}
+
+.fa-warning::before, .fa-exclamation-triangle:before {
+	font-size: 14px;
+}
+
+.fa-warning, .fa-exclamation-triangle {
+	margin-top: 2px;
+}
+
+.fa-plus-square {
+	font-size: 19px;
+	color: #534E4E;
+}
+
+.fa-money {
+	font-size: 28px;
+}
+
+/* For mouse  */
+.fa-plus-circle:hover, .fa-lightbulb-o:hover, .fa-list:hover, .fa-download:hover, .fa-calendar:hover, .fa-road:hover, .fa-edit:hover, .fa-pencil-square-o:hover, .fa-list-alt:hover, .fa-cloud-download:hover, .fa-file-excel-o:hover, .fa-plus-square:hover, .fa-refresh:hover {
+	color: #b7adad;
+}
+
+/* For touch screen devices   */
+.fa-plus-circle:focus, .fa-lightbulb-o:focus, .fa-list:focus, .fa-calendar:focus, .fa-road:focus, .fa-download:focus, .fa-pencil-square-o:focus, .fa-edit:focus, .fa-list-alt:focus, .fa-cloud-download:focus, .fa-file-excel-o:focus, .fa-plus-square:focus, .fa-refresh:hover {
+	color: #B7ADAD;
+}
+
+.fa-road .fa-lg {
+	color: #534e4e;
+}
+
+.cityStateFontSizeLabel, .cityStateFontSize {
+	font-style: italic;
+	font-size: 11px;
+}
+
+.myPlannerDateText {
+	font-size: 17px; 
+	color: #534e4e; 
+	margin-top: 5px; 
+	float:right;
+}
+
+.myPlannerTimeText {
+	font-size: 17px; 
+	color: #534e4e; 
+	margin-right: -88px; 
+	margin-top: 5px; 
+	float:right;
+	}
+
+.myPlannerIcons {
+	float: left; 
+	margin-right: 10px; 
+	margin-top: 2px; 
+}
+
+.myPlannerIconPhone {
+	float: left; 
+	margin-right: 10px; 
+	margin-top: 2px; 
+	margin-left: -7px;
+}
+
+.myPlannerCustomerName {
+	width: 300px; 
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	display: inline-block;
+	}
+
+.fa-edit:before, .fa-pencil-square-o:before {
+	padding-bottom: 5px;
+}
+
+#shipmentServicePaymentDetails {
+	font-size: 20px;
+}
+
+
+.ui-widget-overlay {
+	background: #111010 50% 50% repeat;
+	opacity: 0.8;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  float: right;
+  background: #f2f5f7;
+/* border-bottom: 1px solid #fff;  */
+  border-radius: 3px;    
+}
+
+nav li {
+  float: left;          
+}
+
+nav #login {
+ /* border-right: 1px solid #ddd;  */
+ /* box-shadow: 1px 0 0 #fff;  */
+}
+
+nav #login-trigger,
+nav #signup a {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 25px;
+  line-height: 25px;
+  font-weight: bold;
+  padding: 0 8px;
+  text-decoration: none;
+  color: #444;
+  text-shadow: 0 1px 0 #fff; 
+  font-family: bold 17px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+nav #signup a {
+  border-radius: 0 3px 3px 0;
+}
+
+nav #login-trigger {
+  border-radius: 3px 0 0 3px;
+  font-size: 15px;
+}
+
+nav #login-trigger:hover,
+nav #login .active,
+nav #signup a:hover {
+    background: #e0e0e0; 
+}
+
+nav #login-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  z-index: 999;    
+  background: #f2f5f7;
+  background-image: linear-gradient(top, #fff, #eee);  
+  padding: 7px;
+  box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+/*  border-radius: 3px 0 3px 3px;  */
+  border: 1px solid #8e8b8d;
+  margin-top: 2px;
+}
+
+nav li #login-content {
+  right: 0;
+}
+
+/*--------------------*/
+
+#inputs input {
+  background: #f1f1f1;
+  padding: 6px 5px;
+  margin: 0 0 5px 0;
+  width: 238px;
+}
+
+#inputs input:focus {
+  background-color: #fff;
+  border-color: #e8c291;
+  outline: none;
+}
+
+/*--------------------*/
+
+#login #actions {
+  margin: 10px 0 0 0;
+  border: none;
+}
+
+#login #submit {    
+  background-color: #d14545;
+  background-image: linear-gradient(top, #e97171, #d14545);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.5);
+  border: 1px solid #01599c;
+  float: left;
+  height: 30px;
+  padding: 0;
+  width: 185px;
+  cursor: pointer;
+  color: #fff;
+  font-family: bold 17px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #3BAAE3;
+  
+}
+
+#login #submit:hover,
+#login #submit:focus {    
+  background-color: #2b90c3;
+  background-image: linear-gradient(top, #d14545, #e97171);
+} 
+
+#login #submit:active {   
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;   
+}
+
+#login #submit::-moz-focus-inner {
+  border: none;
+}
+
+#login label {
+  	float: right;
+  	line-height: 30px;
+}
+
+#login label input {
+  	position: relative;
+  	top: 2px;
+  	right: 2px;
+}
+
+#ideaboardstyles {
+	margin-left: 10px; 
+	font-size: 15px; 
+	margin-left: -58px; 
+	cursor: pointer;
+}
+
+#exportPlannerButton {
+	cursor: pointer; 
+	font-size: 15px;
+}
+
+
+#dashboardTab {
+	font-size: 17px;
+}
+
+.abcdpadding {
+	padding: .4em;
+}
+
+#optimizedRouteMapContainer {
+	width: 100%;
+}
+
+#directions_panel {
+	background-color:#FFEE77;
+}
+
+.abcdheaderpadding {
+	padding: .2em;
+}
+
+#abcdChart {
+	width:100%; 
+	height:30px;
+}
+
+#optimizedRouteMapCanvas {
+	float: left; 
+	width:60%;
+	height:100%;
+}
+
+#myplannertemplate {
+	margin: 5px 5px;
+}
+
+#listicon_myalerts {
+	float: right; 
+	color: #535353; 
+	cursor: pointer; 
+	margin-right: 9px; 
+	margin-left: 5px; 
+	margin-top: 4px
+}
+
+table#abcdChart {
+	width:100%; 
+	height:30px;
+}
+
+#tabs_margin {
+	float: right; 
+	margin: 12px 10px 0px 10px;
+}
+
+#myplannersquareicon, #refreshicon {
+	cursor: pointer; 
+	margin-right: 4px;
+}
+
+#myplannertemplate_pencilicon {
+	float: right; 
+	cursor: pointer; 
+	margin-left: 5px; 
+	margin-top: 3px; 
+	margin-right: 13px;
+}
+
+#newcustomerdetaillisticon {
+	float: right; 
+	cursor: pointer; 
+	margin-right: 5px; 
+	margin-top: 4px;
+}
+
+#abcdiconstyles {
+	float: right; 
+	cursor: pointer; 
+	margin-right: 5px;
+}
+
+#leadNotesIconStyles {
+	float: right; 
+	cursor: pointer
+}
+
+.abcdPaddingWarningIcon {
+	float: right; 
+	margin-right: 5px;
+}
+
+/* //////////////////////////////////////////////*/
+/* dialogAddActivity.html.         //////////////*/     
+/* Styles for Add Planner Activity //////////////*/
+/* ////////////////////////////////////////////*/
+
+#addActivityCustomer {
+	margin-right: 1.5em; 
+	margin-left: 16px
+}
+
+#addActivityContact {
+	margin-left: 33px;
+}
+
+#addActivityNoteCode {
+	margin-right: 3em; 
+	margin-left: 20px;
+}
+
+#AddToPlannerSalesActivitySource, #addToPlannerSalesActivitySource {
+	margin-left: -25px;
+}
+
+#addActivityStartDate, #addActivityStartDateStyle {
+	width: 8em; 
+	margin-left: -22px; 
+	margin-right: 3em
+}
+
+#addActivityStartTime {
+	width: 8em; 
+	margin-left: 37px
+}
+
+#editContactPhonesDialog, #editMeetingAddressDialog, #addNewContactDialog {
+	width: 100px;
+}
+
+#formTitleFieldText {
+	text-transform: uppercase; 
+	font-size:1.2em;
+}
+
+#formTitleFieldTextWithPadding {
+	font-variant:small-caps; 
+	font-size:1.2em; 
+	padding-right:1.5em;
+}
+
+#addActivityEndDate{
+	width: 8em; 
+}
+
+#addActivityEndTime, #addActivityEndTimeStyle  {
+	width: 8em; 
+	margin-left: 61px;
+}
+
+#solutionSoldAndNoteStyle {
+	font-variant:small-caps; 
+	font-size:1.2em;
+}
+
+#addActivityNote {
+	width: 750px;
+}
+
+#dialog-confirm {
+	float:left; 
+	margin:0 20px 20px 0;
+}
+
+#marginBottomOneEm {
+	margin-bottom: 1em;
+}
+
+#editMeetingAddress {
+	padding-left:.8em;
+}
+
+select#addToPlannerActivityContactSelect {
+	margin-left: 26px;
+}
+
+select#addToPlannerActivityContactSelectAddress {
+	margin-left: 9px;
+}
+
+/* //////////////////////////////////////////////*/
+/* dialogAddActivityFromAlert.html     //////////*/     
+/* Styles for Add Activity From Alert        ////*/
+/* ////////////////////////////////////////////*/
+
+#addToPlannerActivityContactSelect select {
+	margin-right: 3em; 
+	margin-left: 27px;
+}
+
+#AddToPlannerSalesActivitySource {
+	margin-left: -25px;
+}
+
+select#addToPlannerActivityContactSelectDirect {
+	margin-left: 78px;
+}
+
+select#addToPlannerActivityContactSelect {
+	margin-left: 28px;
+}
+
+#addToPlannerActivityContact {
+	width:36em; 
+	margin-left: 6px;
+}
+
+#addToPlannerSolutionSold {
+	margin-bottom: 1em; 
+	line-height: 150%; 
+	width: 933px;
+}
+
+#customerInputText {
+	margin-left: 15px;
+}
+
+#addToPlannerActivityContactSelectDirect {
+	margin-left: 90px;
+}
+
+/* /////////////////////////////////////////////*/
+/* dialogAlertShipmentDetails.html     /////////*/     
+/* Styles for Alert Shipment Details        ////*/
+/* ////////////////////////////////////////////*/
+
+#shipmentImportantInfo {
+	background-color: #A8A3A3;
+}
+
+#shipmentDateStyle, #serviceStyle, #trackingNumberStyle {
+	padding-right: 4em; 
+	font-size: 20px;
+}
+
+/*//////////////////////////////////////////////*/
+/* dialogEditActivity.html             /////////*/     
+/* Styles for Edit Planner Event Dialog       //*/
+/* ////////////////////////////////////////////*/
+
+#addToPlannerActivityContactSelectEdit {
+	margin-left: 76px;
+}
+
+#addToPlannerActivityContactEdit {
+	margin-left: 8px;
+}
+
+#editActivityNoteCode {
+	margin-left: 22px;
+	margin-right: 3em;
+}
+
+#editActivityContact {
+	margin-left: 29px;
+}
+
+
+#editActivityStartTime {
+	margin-left: 35px;
+	width: 8em;
+}
+
+#editActivityEndTime {
+	margin-left: 58px;
+	width: 8em;
+}
+
+#editActivityStartDate {
+	width: 8em; 
+	margin-left: -22px;
+}
+
+#editActivityEndDate {
+	width: 8em; 
+	margin-right: 3em;
+}
+
+#editActivityEditMeetingAddressDialog, #editActivityEditContactPhonesDialog, #editActivityAddNewContactDialog {
+	width: 100px;
+}
+
+#fullCustomerMargin {
+	margin-left: 16px;
+}
+
+#addToPlannerSolutionSoldDetail {
+	margin-bottom: 1em; 
+	line-height: 150%; 
+	margin-right: 29px; 
+	width: 933px
+}
+
+#completeCheckBox, #editActivityCompleteCheckbox {
+	float: left;
+}
+
+#addToPlannerActivityContactSelectDirectStyle {
+	margin-left: 4.9em;
+}
+
+/* ///////////////////////////////////*/
+/* Styles for Ipad2 in Landscape Mode */
+/* /////////////////////////////////// */
+
+	@media screen 
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px) 
+	and (orientation : landscape) { 
+		
+		#addActivityEndTimeStyle {
+			margin-left: 51px;
+		}
+		
+		.ui-widget-overlay {
+			background: #111010 50% 50% repeat;
+			opacity: 0.8;
+		}
+		
+		#addActivityStartDateStyle {
+			margin-left: -18px;
+		}
+		
+		#addToPlannerActivityContactSelectDirectStyle {
+			margin-left: 69px;
+		}
+		
+		#editActivityStartDate {
+			margin-left: -24px;
+		}
+		
+		#editActivityNoteCode {
+			margin-left: 20px;
+		}
+		
+		#editActivityEndTime {
+			margin-left: 27px;
+		}
+		
+		select#addToPlannerActivityContactSelectDirect {
+			margin-left: 74px;
+		}
+		
+		#addToPlannerActivityContactSelectEdit {
+			margin-left: 46px;
+		}
+		
+		#addToPlannerActivityContactEdit {
+			margin-left: 8px;
+		}
+		
+		#editActivityNote {
+			margin-top: -1em;
+		}
+		
+		#shipmentServicePaymentDetails, #serviceStyle, #trackingNumberStyle {
+			font-size: 15px;
+		}
+		
+		#shipmentDateStyle {
+			padding-right: 4em; 
+			font-size: 15px;
+		}
+		
+		form    {
+			display: block;
+			background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
+			background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+			margin:auto;
+			position:relative;
+			font-size: 14px;
+			line-height: 24px;
+			font-weight: bold;
+			text-decoration: none;
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+			padding:10px;
+			border: 1px solid #CCCCCC;
+		/*	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);  */
+		/*	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);  */
+		/*	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);  */
+		}
+		
+		input    {
+			border: 1px solid #999;
+			-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);  
+			-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);  
+			box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);  
+		}
+		
+		textarea#tableborder {
+			width:375px;
+			height:150px;
+		}
+		
+		textarea.message {
+			display:block;
+		}
+		
+		input.button {
+			width:100px;
+			position:absolute;
+			right:20px;
+			bottom:20px;
+			background:#09C;
+			color:#fff;
+			height:30px;
+			-webkit-border-radius: 15px;
+			-moz-border-radius: 15px;
+			border-radius: 15px;
+			border: 1px solid #999;
+		}
+		input.button:hover {
+			background:#fff;
+			color:#09C;
+		}
+		
+		textarea:focus, input:focus {
+			border: 1px solid #09C;
+		}
+		
+		table[Attributes Style] {
+		width: 100%;
+		border-top-width: 0px;
+		border-right-width: 0px;
+		border-bottom-width: 0px;
+		border-left-width: 0px;
+		}
+		
+		b {
+		 	font-size: 16px;
+		}
+		
+		h3 {
+			margin: 6px 6px;
+		}
+		
+		#addAlertToPlanner, #editPlanner, #addToPlanner {
+			border: 1px solid #CCCCCC;
+			padding: 6px 7px;
+		}
+		
+		button {
+			margin-top: 6px;
+		}
+		
+		#addActivityStartTime {
+			margin-left: 33px;
+		}
+		
+		#quotesAndServiceShpUser, #quotesandServiceConUser, #quotesAndServiceThdUser, #newCustomersReturningCustomersCustomerName, #abcdCustomerName, #leadNotesHeaderCustomerName {
+			width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block;
+		}
+		
+		.myPlannerCustomerName {
+			width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block;
+		}
+		
+		.myPlannerTimeText {
+		font-size: 18px; color: #534e4e; margin-right: -88px; margin-top: 3px;
+		}
+		
+		.myPlannerDateText {
+		font-size: 17px; color: #534e4e; 
+		}
+			
+		.myPlannerIconPhone, .myPlannerIcons {
+		float: left; margin-right: 10px; margin-top: 2px; 
+		}
+		
+		.myPlannerIconContactName {
+			font-style:italic;
+		}
+		
+		#box2 { 
+	    position: absolute;
+	    left: 25%; 
+	    width: 34%; 
+	    height: 36%;
+		}
+		
+		#dashboardMap {
+	    left:25%; 
+	    top:52%; 
+	    width:75%; 
+	    height:48%; 
+	    padding: 0;
+	    position: absolute;
+	  	/*  border-radius: 10px; */
+		}
+		
+		.ui-diaglog-buttonset {
+			margin-top: 1.0em;
+		}
+		
+		#addActivityContact {
+			margin-left: 32px;
+		}
+		
+		#addActivityStartDate {
+			margin-left: -22px;
+		}
+		
+		#addToPlannerActivityContactSelect {
+			margin-left: 79px;
+		}
+		
+		#addActivityEndTime  {
+			width: 8em;
+			margin-left: 55px; 
+			
+		select#addToPlannerActivityContactSelectDirect, select#addToPlannerActivityContactSelectDirect {
+			margin-left: 75px;
+		}
+		
+		#addToPlannerSolutionSoldDetail {
+			width: 862px;
+		}
+		
+				}  /*end of Ipad2 Landscape media query */
+
+
+		/* ///////////////////////////////////// */
+ 		/* Styles for iPhone 4  */
+		/* /////////////////////////////////// */
+		
+		@media screen and (device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)  {
+	
+		#box1, #box3, #box4, #dashboardMap {
+			display: none;
+		}
+		
+		#box2 {
+			width: 70%; 
+    		height: 80%;
+		}
+			}
+

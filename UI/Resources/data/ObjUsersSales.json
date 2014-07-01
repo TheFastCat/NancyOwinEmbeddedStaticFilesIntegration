@@ -1,0 +1,128 @@
+[
+{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"BRRO"
+,"TableKey":215678
+,"UserFullName":"BRAD RODGERS"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"DAWS"
+,"TableKey":316454
+,"UserFullName":"DAVE WESTMEYER"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"EMHA"
+,"TableKey":251034
+,"UserFullName":"EMILY HAGGSTROM"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"EVON"
+,"TableKey":333419
+,"UserFullName":"EVA ONTIVEROS"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"JASM"
+,"TableKey":215867
+,"UserFullName":"JAMES SMEJKAL"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"JOBO"
+,"TableKey":240241
+,"UserFullName":"JOHN BONER"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"JAMT"
+,"TableKey":181324
+,"UserFullName":"JP MARTINEZ"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"MEMU"
+,"TableKey":333420
+,"UserFullName":"MELISSA MULDER"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"MICO"
+,"TableKey":216004
+,"UserFullName":"MICHAEL CONNORS"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"NAVO"
+,"TableKey":297261
+,"UserFullName":"NANCY VORDERSTRASSE"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"NABR"
+,"TableKey":318056
+,"UserFullName":"NATHAN BROWNING"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"PALE"
+,"TableKey":216039
+,"UserFullName":"PAUL LEWIS"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"PERI"
+,"TableKey":295829
+,"UserFullName":"PETER RINALDI"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"REWE"
+,"TableKey":325487
+,"UserFullName":"REBECCA WEAVER"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"REPF"
+,"TableKey":278916
+,"UserFullName":"REGAN PFLEIGER"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"RODV"
+,"TableKey":294322
+,"UserFullName":"RON DAVIS"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"STFA"
+,"TableKey":216116
+,"UserFullName":"STACY FARLEY"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"TIKO"
+,"TableKey":216133
+,"UserFullName":"TIMOTHY KOVACIC"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"TORO"
+,"TableKey":278934
+,"UserFullName":"TODD ROWLEY"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"TRLI"
+,"TableKey":216146
+,"UserFullName":"TRACY LISKOWSKI"
+}
+,{
+"json_featuretype":"NewFeatureType"
+,"SalesID":"TRGA"
+,"TableKey":264173
+,"UserFullName":"TREVOR GARNER"
+}
+]
